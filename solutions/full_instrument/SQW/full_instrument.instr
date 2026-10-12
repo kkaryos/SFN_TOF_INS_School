@@ -1,0 +1,1556 @@
+/********************************************************************************
+* 
+* McStas, neutron ray-tracing package
+*         Copyright (C) 1997-2008, All rights reserved
+*         Risoe National Laboratory, Roskilde, Denmark
+*         Institut Laue Langevin, Grenoble, France
+* 
+* This file was written by McStasScript, which is a 
+* python based McStas instrument generator written by 
+* Mads Bertelsen in 2019 while employed at the 
+* European Spallation Source Data Management and 
+* Software Centre
+* 
+* Instrument: full_instrument
+* 
+* %Identification
+* Written by: McStasScript example
+* Date: 13:34:32 on October 11, 2026
+* Origin: Teaching example
+* %INSTRUMENT_SITE: Generated_instruments
+* 
+* !!Please write a short instrument description (1 line) here!!
+* 
+* %Description
+* Please write a longer instrument description here!
+* 
+* 
+* %Parameters
+* pulse_length: [unit] Proton pulse duration for the moderator model [s]
+* moderator_tau: [unit] Cold moderator decay time used by Source_pulsed [s]
+* moderator_n: [unit] Cold moderator pulse-shape parameter used by Source_pulsed
+* source_frequency: [unit] Source repetition rate [Hz]
+* lambda_min: [unit] Minimum source wavelength [Angstrom]
+* lambda_max: [unit] Maximum source wavelength [Angstrom]
+* source_t_max: [unit] End of Source_pulsed emission-time sampling window [s]
+* linx: [unit] Horizontal upstream focal distance [m]
+* liny: [unit] Vertical upstream focal distance [m]
+* loutx: [unit] Horizontal downstream focal distance [m]
+* louty: [unit] Vertical downstream focal distance [m]
+* guide_length: [unit] Length of the uninterrupted elliptic guide [m]
+* guide_xwidth: [unit] Horizontal guide dimension at mid-length [m]
+* guide_yheight: [unit] Vertical guide dimension at mid-length [m]
+* d_source_guide: [unit] Source-to-guide entrance distance [m]
+* d_guide_sample: [unit] Guide exit-to-sample distance [m]
+* lambda_f: [unit] Analyser-selected wavelength [Angstrom]
+* channel_angle: [unit] Sample-to-analyser direction [degrees]
+* d_sample_analyser: [unit] Sample-to-analyser distance [m]
+* analyser_d: [unit] Analyser lattice spacing [Angstrom]
+* analyser_width: [unit] Total analyser width [m]
+* analyser_height: [unit] Total analyser height [m]
+* analyser_mosaic_h: [unit] Horizontal mosaic [arcmin]
+* analyser_mosaic_v: [unit] Vertical mosaic [arcmin]
+* analyser_NH: [unit] Horizontal blade count
+* analyser_NV: [unit] Vertical blade count
+* analyser_gap: [unit] Blade gap [m]
+* analyser_detector_distance: [unit] FANTASTIC L2: separation along fixed detector arm [m]
+* detector_x: [unit] Combined tube width [m]
+* detector_y: [unit] Tube height [m]
+* sample_radius: [unit] Sample radius [m]
+* sample_height: [unit] Sample height [m]
+* sample_rotation_x: [unit] Sample x rotation [degrees]
+* sample_rotation_y: [unit] Sample y rotation [degrees]
+* sample_rotation_z: [unit] Sample z rotation [degrees]
+* sample_E_tun: [unit] Tunneling energy transfer Ei - Ef [meV]
+* analyser_focusing: [unit] 1: FANTASTIC focusing radii; 0: flat analyser
+* sample_rho: [unit] S(Q,w) scattering-unit number density [Angstrom^-3]
+* offset: [unit] Rotation of the complete analyser bank [degrees]
+* 
+* %Link 
+* 
+* %End 
+********************************************************************************/
+
+DEFINE INSTRUMENT full_instrument (
+pulse_length = 0.0004, // Proton pulse duration for the moderator model [s]
+moderator_tau = 0.00017, // Cold moderator decay time used by Source_pulsed [s]
+moderator_n = 5.0, // Cold moderator pulse-shape parameter used by Source_pulsed
+source_frequency = 50.0, // Source repetition rate [Hz]
+lambda_min = 2.0, // Minimum source wavelength [Angstrom]
+lambda_max = 4.0, // Maximum source wavelength [Angstrom]
+double source_t_max = 0.004, // End of Source_pulsed emission-time sampling window [s]
+double linx = 0.611423, // Horizontal upstream focal distance [m]
+double liny = 1.04627, // Vertical upstream focal distance [m]
+double loutx = 1.68246, // Horizontal downstream focal distance [m]
+double louty = 1.94531, // Vertical downstream focal distance [m]
+double guide_length = 35.0, // Length of the uninterrupted elliptic guide [m]
+double guide_xwidth = 0.12, // Horizontal guide dimension at mid-length [m]
+double guide_yheight = 0.12, // Vertical guide dimension at mid-length [m]
+double d_source_guide = 0.5, // Source-to-guide entrance distance [m]
+double d_guide_sample = 1.5, // Guide exit-to-sample distance [m]
+double lambda_f = 4.0, // Analyser-selected wavelength [Angstrom]
+double channel_angle = 30.0, // Sample-to-analyser direction [degrees]
+double d_sample_analyser = 0.858, // Sample-to-analyser distance [m]
+double analyser_d = 3.357, // Analyser lattice spacing [Angstrom]
+double analyser_width = 0.07, // Total analyser width [m]
+double analyser_height = 0.03, // Total analyser height [m]
+double analyser_mosaic_h = 30.0, // Horizontal mosaic [arcmin]
+double analyser_mosaic_v = 30.0, // Vertical mosaic [arcmin]
+int analyser_NH = 11, // Horizontal blade count
+int analyser_NV = 11, // Vertical blade count
+double analyser_gap = 0.0005, // Blade gap [m]
+double analyser_detector_distance = 0.5, // FANTASTIC L2: separation along fixed detector arm [m]
+double detector_x = 0.038099999999999995, // Combined tube width [m]
+double detector_y = 0.5588, // Tube height [m]
+double sample_radius = 0.01, // Sample radius [m]
+double sample_height = 0.02, // Sample height [m]
+double sample_rotation_x = 0.0, // Sample x rotation [degrees]
+double sample_rotation_y = 0.0, // Sample y rotation [degrees]
+double sample_rotation_z = 0.0, // Sample z rotation [degrees]
+double sample_E_tun = 2.5, // Tunneling energy transfer Ei - Ef [meV]
+double analyser_focusing = 1, // 1: FANTASTIC focusing radii; 0: flat analyser
+double sample_rho = 0.05, // S(Q,w) scattering-unit number density [Angstrom^-3]
+double offset = 0.0 // Rotation of the complete analyser bank [degrees]
+)
+
+DECLARE 
+%{
+double A5;
+double analyser_RH;
+double analyser_RV;
+double L_primary_channel;
+double tube_tmin;
+double tube_tmax;
+char tube_options[1024];
+double detector_deflection;
+double detector_ray_path;
+double tube_center_y;
+double detector_hit_x;
+double detector_hit_y;
+double detector_hit_z;
+%}
+
+INITIALIZE 
+%{
+// Start of initialize for generated full_instrument
+if (lambda_min <= 0 || lambda_max <= lambda_min || source_frequency <= 0 || pulse_length <= 0 || moderator_tau <= 0 || moderator_n <= 1 || source_t_max <= 0) { fprintf(stderr, "Invalid source parameters\n"); exit(1); }
+if (guide_length <= 0 || guide_xwidth <= 0 || guide_yheight <= 0 || d_source_guide <= 0 || d_guide_sample < 0 || linx <= 0 || liny <= 0 || loutx <= 0 || louty <= 0) { fprintf(stderr, "Invalid elliptic-guide geometry\n"); exit(1); }
+if (lambda_f <= 0 || analyser_d <= 0 || lambda_f >= 2*analyser_d || d_sample_analyser <= 0 || analyser_detector_distance <= 0 || analyser_width <= 0 || analyser_height <= 0 || analyser_NH < 1 || analyser_NV < 1 || analyser_gap < 0 || analyser_mosaic_h <= 0 || analyser_mosaic_v <= 0 || detector_x <= 0 || detector_y <= 0 || sample_radius <= 0 || sample_height <= 0) { fprintf(stderr, "Invalid secondary-channel parameters\n"); exit(1); }
+A5 = asin(lambda_f/(2.0*analyser_d))*180.0/PI;
+detector_deflection = 2.0*A5;
+if (sin(DEG2RAD*detector_deflection) <= 1e-8) { fprintf(stderr, "Detector intersection is undefined at this Bragg angle\n"); exit(1); }
+detector_ray_path = analyser_detector_distance/sin(DEG2RAD*detector_deflection);
+tube_center_y = -analyser_detector_distance/tan(DEG2RAD*detector_deflection);
+detector_hit_x = (d_sample_analyser - tube_center_y)*sin(DEG2RAD*(offset + 60.0));
+detector_hit_y = -analyser_detector_distance;
+detector_hit_z = (d_sample_analyser - tube_center_y)*cos(DEG2RAD*(offset + 60.0));
+printf("FANTASTIC fixed -90 deg detector arm: 2A5=%g deg; ray path=%g m; predicted ray local y=%g m (diagnostic only); ray intersection relative to sample=(%g,%g,%g) m\n", detector_deflection, detector_ray_path, tube_center_y, detector_hit_x, detector_hit_y, detector_hit_z);
+if (analyser_focusing != 0 && analyser_focusing != 1) { fprintf(stderr, "analyser_focusing must be 0 or 1\n"); exit(1); }
+analyser_RH = analyser_focusing ? -d_sample_analyser : 0.0;
+analyser_RV = analyser_focusing ? -2.0*d_sample_analyser*sin(DEG2RAD*A5) : 0.0;
+L_primary_channel = d_source_guide + guide_length + d_guide_sample;
+tube_tmin = 0.02338220424671385;
+tube_tmax = 0.04338220424671385;
+snprintf(tube_options, sizeof(tube_options), "cylinder, y, bins=2, t, limits=[%.17g %.17g], bins=1000", tube_tmin, tube_tmax);
+printf("30 analysers: lambda_f=%g A, A5=%g deg, RH=%g m, RV=%g m, detector interval=[%g,%g] ms\n", lambda_f, A5, analyser_RH, analyser_RV, 1e3*tube_tmin, 1e3*tube_tmax);
+if (source_t_max <= 0) { fprintf(stderr, "source_t_max must be positive\n"); exit(1); }
+if (sample_rho <= 0) { fprintf(stderr, "sample_rho must be positive\n"); exit(1); }
+%}
+
+TRACE 
+COMPONENT source = Source_pulsed(
+ xwidth = 0.042, yheight = 0.03,
+ Lmin = lambda_min, Lmax = lambda_max,
+ t_min = 0.0, t_max = source_t_max,
+ dist = d_source_guide, focus_xw = 0.04,
+ focus_yh = 0.04, freq = source_frequency,
+ t_pulse = pulse_length, T1 = 60.0,
+ I1 = 1.75e12/source_frequency, tau1 = moderator_tau,
+ n_mod = moderator_n, I_um = 3.82e10/source_frequency,
+ tau_um = 1.2e-05, n_um = 5.0,
+ chi_um = 0.9, kap_um = 2.2)
+AT (0, 0, 0) ABSOLUTE
+
+COMPONENT guide = Elliptic_guide_gravity(
+ xwidth = guide_xwidth, yheight = guide_yheight,
+ l = guide_length, linxw = linx,
+ loutxw = loutx, linyh = liny,
+ loutyh = louty, dimensionsAt = "mid",
+ option = "ellipse", R0 = 0.99,
+ Qc = 0.0218, alpha = 6.07,
+ m = 4, W = 0.003)
+AT (0, 0, d_source_guide) RELATIVE source
+
+COMPONENT guide_out = Arm()
+AT (0, 0, guide_length) RELATIVE guide
+
+COMPONENT sample_position = Arm()
+AT (0, 0, d_guide_sample) RELATIVE guide_out
+
+COMPONENT sample_sqw = Isotropic_Sqw(
+ Sqw_coh = "SQW.dat", radius = sample_radius,
+ thickness = 0.0, yheight = sample_height,
+ order = 1, d_phi = 3,
+ rho = sample_rho, p_interact = 1.0)
+AT (0, 0, 0) RELATIVE sample_position
+ROTATED (sample_rotation_x, sample_rotation_y, sample_rotation_z) RELATIVE sample_position
+EXTEND %{
+if (!SCATTERED) { ABSORB; }
+%}
+
+COMPONENT ana_arm0 = Arm()
+AT (d_sample_analyser*sin(DEG2RAD*(offset + 0)), 0, d_sample_analyser*cos(DEG2RAD*(offset + 0))) RELATIVE sample_position
+ROTATED (0, offset + 0, 90) RELATIVE sample_position
+
+COMPONENT ana_arm1 = Arm()
+AT (d_sample_analyser*sin(DEG2RAD*(offset + 4)), 0, d_sample_analyser*cos(DEG2RAD*(offset + 4))) RELATIVE sample_position
+ROTATED (0, offset + 4, 90) RELATIVE sample_position
+
+COMPONENT ana_arm2 = Arm()
+AT (d_sample_analyser*sin(DEG2RAD*(offset + 8)), 0, d_sample_analyser*cos(DEG2RAD*(offset + 8))) RELATIVE sample_position
+ROTATED (0, offset + 8, 90) RELATIVE sample_position
+
+COMPONENT ana_arm3 = Arm()
+AT (d_sample_analyser*sin(DEG2RAD*(offset + 12)), 0, d_sample_analyser*cos(DEG2RAD*(offset + 12))) RELATIVE sample_position
+ROTATED (0, offset + 12, 90) RELATIVE sample_position
+
+COMPONENT ana_arm4 = Arm()
+AT (d_sample_analyser*sin(DEG2RAD*(offset + 16)), 0, d_sample_analyser*cos(DEG2RAD*(offset + 16))) RELATIVE sample_position
+ROTATED (0, offset + 16, 90) RELATIVE sample_position
+
+COMPONENT ana_arm5 = Arm()
+AT (d_sample_analyser*sin(DEG2RAD*(offset + 20)), 0, d_sample_analyser*cos(DEG2RAD*(offset + 20))) RELATIVE sample_position
+ROTATED (0, offset + 20, 90) RELATIVE sample_position
+
+COMPONENT ana_arm6 = Arm()
+AT (d_sample_analyser*sin(DEG2RAD*(offset + 24)), 0, d_sample_analyser*cos(DEG2RAD*(offset + 24))) RELATIVE sample_position
+ROTATED (0, offset + 24, 90) RELATIVE sample_position
+
+COMPONENT ana_arm7 = Arm()
+AT (d_sample_analyser*sin(DEG2RAD*(offset + 28)), 0, d_sample_analyser*cos(DEG2RAD*(offset + 28))) RELATIVE sample_position
+ROTATED (0, offset + 28, 90) RELATIVE sample_position
+
+COMPONENT ana_arm8 = Arm()
+AT (d_sample_analyser*sin(DEG2RAD*(offset + 32)), 0, d_sample_analyser*cos(DEG2RAD*(offset + 32))) RELATIVE sample_position
+ROTATED (0, offset + 32, 90) RELATIVE sample_position
+
+COMPONENT ana_arm9 = Arm()
+AT (d_sample_analyser*sin(DEG2RAD*(offset + 36)), 0, d_sample_analyser*cos(DEG2RAD*(offset + 36))) RELATIVE sample_position
+ROTATED (0, offset + 36, 90) RELATIVE sample_position
+
+COMPONENT ana_arm10 = Arm()
+AT (d_sample_analyser*sin(DEG2RAD*(offset + 40)), 0, d_sample_analyser*cos(DEG2RAD*(offset + 40))) RELATIVE sample_position
+ROTATED (0, offset + 40, 90) RELATIVE sample_position
+
+COMPONENT ana_arm11 = Arm()
+AT (d_sample_analyser*sin(DEG2RAD*(offset + 44)), 0, d_sample_analyser*cos(DEG2RAD*(offset + 44))) RELATIVE sample_position
+ROTATED (0, offset + 44, 90) RELATIVE sample_position
+
+COMPONENT ana_arm12 = Arm()
+AT (d_sample_analyser*sin(DEG2RAD*(offset + 48)), 0, d_sample_analyser*cos(DEG2RAD*(offset + 48))) RELATIVE sample_position
+ROTATED (0, offset + 48, 90) RELATIVE sample_position
+
+COMPONENT ana_arm13 = Arm()
+AT (d_sample_analyser*sin(DEG2RAD*(offset + 52)), 0, d_sample_analyser*cos(DEG2RAD*(offset + 52))) RELATIVE sample_position
+ROTATED (0, offset + 52, 90) RELATIVE sample_position
+
+COMPONENT ana_arm14 = Arm()
+AT (d_sample_analyser*sin(DEG2RAD*(offset + 56)), 0, d_sample_analyser*cos(DEG2RAD*(offset + 56))) RELATIVE sample_position
+ROTATED (0, offset + 56, 90) RELATIVE sample_position
+
+COMPONENT ana_arm15 = Arm()
+AT (d_sample_analyser*sin(DEG2RAD*(offset + 60)), 0, d_sample_analyser*cos(DEG2RAD*(offset + 60))) RELATIVE sample_position
+ROTATED (0, offset + 60, 90) RELATIVE sample_position
+
+COMPONENT ana_arm16 = Arm()
+AT (d_sample_analyser*sin(DEG2RAD*(offset + 64)), 0, d_sample_analyser*cos(DEG2RAD*(offset + 64))) RELATIVE sample_position
+ROTATED (0, offset + 64, 90) RELATIVE sample_position
+
+COMPONENT ana_arm17 = Arm()
+AT (d_sample_analyser*sin(DEG2RAD*(offset + 68)), 0, d_sample_analyser*cos(DEG2RAD*(offset + 68))) RELATIVE sample_position
+ROTATED (0, offset + 68, 90) RELATIVE sample_position
+
+COMPONENT ana_arm18 = Arm()
+AT (d_sample_analyser*sin(DEG2RAD*(offset + 72)), 0, d_sample_analyser*cos(DEG2RAD*(offset + 72))) RELATIVE sample_position
+ROTATED (0, offset + 72, 90) RELATIVE sample_position
+
+COMPONENT ana_arm19 = Arm()
+AT (d_sample_analyser*sin(DEG2RAD*(offset + 76)), 0, d_sample_analyser*cos(DEG2RAD*(offset + 76))) RELATIVE sample_position
+ROTATED (0, offset + 76, 90) RELATIVE sample_position
+
+COMPONENT ana_arm20 = Arm()
+AT (d_sample_analyser*sin(DEG2RAD*(offset + 80)), 0, d_sample_analyser*cos(DEG2RAD*(offset + 80))) RELATIVE sample_position
+ROTATED (0, offset + 80, 90) RELATIVE sample_position
+
+COMPONENT ana_arm21 = Arm()
+AT (d_sample_analyser*sin(DEG2RAD*(offset + 84)), 0, d_sample_analyser*cos(DEG2RAD*(offset + 84))) RELATIVE sample_position
+ROTATED (0, offset + 84, 90) RELATIVE sample_position
+
+COMPONENT ana_arm22 = Arm()
+AT (d_sample_analyser*sin(DEG2RAD*(offset + 88)), 0, d_sample_analyser*cos(DEG2RAD*(offset + 88))) RELATIVE sample_position
+ROTATED (0, offset + 88, 90) RELATIVE sample_position
+
+COMPONENT ana_arm23 = Arm()
+AT (d_sample_analyser*sin(DEG2RAD*(offset + 92)), 0, d_sample_analyser*cos(DEG2RAD*(offset + 92))) RELATIVE sample_position
+ROTATED (0, offset + 92, 90) RELATIVE sample_position
+
+COMPONENT ana_arm24 = Arm()
+AT (d_sample_analyser*sin(DEG2RAD*(offset + 96)), 0, d_sample_analyser*cos(DEG2RAD*(offset + 96))) RELATIVE sample_position
+ROTATED (0, offset + 96, 90) RELATIVE sample_position
+
+COMPONENT ana_arm25 = Arm()
+AT (d_sample_analyser*sin(DEG2RAD*(offset + 100)), 0, d_sample_analyser*cos(DEG2RAD*(offset + 100))) RELATIVE sample_position
+ROTATED (0, offset + 100, 90) RELATIVE sample_position
+
+COMPONENT ana_arm26 = Arm()
+AT (d_sample_analyser*sin(DEG2RAD*(offset + 104)), 0, d_sample_analyser*cos(DEG2RAD*(offset + 104))) RELATIVE sample_position
+ROTATED (0, offset + 104, 90) RELATIVE sample_position
+
+COMPONENT ana_arm27 = Arm()
+AT (d_sample_analyser*sin(DEG2RAD*(offset + 108)), 0, d_sample_analyser*cos(DEG2RAD*(offset + 108))) RELATIVE sample_position
+ROTATED (0, offset + 108, 90) RELATIVE sample_position
+
+COMPONENT ana_arm28 = Arm()
+AT (d_sample_analyser*sin(DEG2RAD*(offset + 112)), 0, d_sample_analyser*cos(DEG2RAD*(offset + 112))) RELATIVE sample_position
+ROTATED (0, offset + 112, 90) RELATIVE sample_position
+
+COMPONENT ana_arm29 = Arm()
+AT (d_sample_analyser*sin(DEG2RAD*(offset + 116)), 0, d_sample_analyser*cos(DEG2RAD*(offset + 116))) RELATIVE sample_position
+ROTATED (0, offset + 116, 90) RELATIVE sample_position
+
+COMPONENT monochromator0 = Monochromator_curved(
+ gap = analyser_gap, NH = analyser_NH,
+ NV = analyser_NV, mosaich = analyser_mosaic_h,
+ mosaicv = analyser_mosaic_v, r0 = 0.99,
+ t0 = 1.0, RV = analyser_RV,
+ RH = analyser_RH, DM = analyser_d,
+ width = analyser_width, height = analyser_height,
+ order = 1)
+AT (0, 0, 0) RELATIVE ana_arm0
+ROTATED (0, -A5, 0) RELATIVE ana_arm0
+GROUP analysers
+
+COMPONENT monochromator1 = Monochromator_curved(
+ gap = analyser_gap, NH = analyser_NH,
+ NV = analyser_NV, mosaich = analyser_mosaic_h,
+ mosaicv = analyser_mosaic_v, r0 = 0.99,
+ t0 = 1.0, RV = analyser_RV,
+ RH = analyser_RH, DM = analyser_d,
+ width = analyser_width, height = analyser_height,
+ order = 1)
+AT (0, 0, 0) RELATIVE ana_arm1
+ROTATED (0, -A5, 0) RELATIVE ana_arm1
+GROUP analysers
+
+COMPONENT monochromator2 = Monochromator_curved(
+ gap = analyser_gap, NH = analyser_NH,
+ NV = analyser_NV, mosaich = analyser_mosaic_h,
+ mosaicv = analyser_mosaic_v, r0 = 0.99,
+ t0 = 1.0, RV = analyser_RV,
+ RH = analyser_RH, DM = analyser_d,
+ width = analyser_width, height = analyser_height,
+ order = 1)
+AT (0, 0, 0) RELATIVE ana_arm2
+ROTATED (0, -A5, 0) RELATIVE ana_arm2
+GROUP analysers
+
+COMPONENT monochromator3 = Monochromator_curved(
+ gap = analyser_gap, NH = analyser_NH,
+ NV = analyser_NV, mosaich = analyser_mosaic_h,
+ mosaicv = analyser_mosaic_v, r0 = 0.99,
+ t0 = 1.0, RV = analyser_RV,
+ RH = analyser_RH, DM = analyser_d,
+ width = analyser_width, height = analyser_height,
+ order = 1)
+AT (0, 0, 0) RELATIVE ana_arm3
+ROTATED (0, -A5, 0) RELATIVE ana_arm3
+GROUP analysers
+
+COMPONENT monochromator4 = Monochromator_curved(
+ gap = analyser_gap, NH = analyser_NH,
+ NV = analyser_NV, mosaich = analyser_mosaic_h,
+ mosaicv = analyser_mosaic_v, r0 = 0.99,
+ t0 = 1.0, RV = analyser_RV,
+ RH = analyser_RH, DM = analyser_d,
+ width = analyser_width, height = analyser_height,
+ order = 1)
+AT (0, 0, 0) RELATIVE ana_arm4
+ROTATED (0, -A5, 0) RELATIVE ana_arm4
+GROUP analysers
+
+COMPONENT monochromator5 = Monochromator_curved(
+ gap = analyser_gap, NH = analyser_NH,
+ NV = analyser_NV, mosaich = analyser_mosaic_h,
+ mosaicv = analyser_mosaic_v, r0 = 0.99,
+ t0 = 1.0, RV = analyser_RV,
+ RH = analyser_RH, DM = analyser_d,
+ width = analyser_width, height = analyser_height,
+ order = 1)
+AT (0, 0, 0) RELATIVE ana_arm5
+ROTATED (0, -A5, 0) RELATIVE ana_arm5
+GROUP analysers
+
+COMPONENT monochromator6 = Monochromator_curved(
+ gap = analyser_gap, NH = analyser_NH,
+ NV = analyser_NV, mosaich = analyser_mosaic_h,
+ mosaicv = analyser_mosaic_v, r0 = 0.99,
+ t0 = 1.0, RV = analyser_RV,
+ RH = analyser_RH, DM = analyser_d,
+ width = analyser_width, height = analyser_height,
+ order = 1)
+AT (0, 0, 0) RELATIVE ana_arm6
+ROTATED (0, -A5, 0) RELATIVE ana_arm6
+GROUP analysers
+
+COMPONENT monochromator7 = Monochromator_curved(
+ gap = analyser_gap, NH = analyser_NH,
+ NV = analyser_NV, mosaich = analyser_mosaic_h,
+ mosaicv = analyser_mosaic_v, r0 = 0.99,
+ t0 = 1.0, RV = analyser_RV,
+ RH = analyser_RH, DM = analyser_d,
+ width = analyser_width, height = analyser_height,
+ order = 1)
+AT (0, 0, 0) RELATIVE ana_arm7
+ROTATED (0, -A5, 0) RELATIVE ana_arm7
+GROUP analysers
+
+COMPONENT monochromator8 = Monochromator_curved(
+ gap = analyser_gap, NH = analyser_NH,
+ NV = analyser_NV, mosaich = analyser_mosaic_h,
+ mosaicv = analyser_mosaic_v, r0 = 0.99,
+ t0 = 1.0, RV = analyser_RV,
+ RH = analyser_RH, DM = analyser_d,
+ width = analyser_width, height = analyser_height,
+ order = 1)
+AT (0, 0, 0) RELATIVE ana_arm8
+ROTATED (0, -A5, 0) RELATIVE ana_arm8
+GROUP analysers
+
+COMPONENT monochromator9 = Monochromator_curved(
+ gap = analyser_gap, NH = analyser_NH,
+ NV = analyser_NV, mosaich = analyser_mosaic_h,
+ mosaicv = analyser_mosaic_v, r0 = 0.99,
+ t0 = 1.0, RV = analyser_RV,
+ RH = analyser_RH, DM = analyser_d,
+ width = analyser_width, height = analyser_height,
+ order = 1)
+AT (0, 0, 0) RELATIVE ana_arm9
+ROTATED (0, -A5, 0) RELATIVE ana_arm9
+GROUP analysers
+
+COMPONENT monochromator10 = Monochromator_curved(
+ gap = analyser_gap, NH = analyser_NH,
+ NV = analyser_NV, mosaich = analyser_mosaic_h,
+ mosaicv = analyser_mosaic_v, r0 = 0.99,
+ t0 = 1.0, RV = analyser_RV,
+ RH = analyser_RH, DM = analyser_d,
+ width = analyser_width, height = analyser_height,
+ order = 1)
+AT (0, 0, 0) RELATIVE ana_arm10
+ROTATED (0, -A5, 0) RELATIVE ana_arm10
+GROUP analysers
+
+COMPONENT monochromator11 = Monochromator_curved(
+ gap = analyser_gap, NH = analyser_NH,
+ NV = analyser_NV, mosaich = analyser_mosaic_h,
+ mosaicv = analyser_mosaic_v, r0 = 0.99,
+ t0 = 1.0, RV = analyser_RV,
+ RH = analyser_RH, DM = analyser_d,
+ width = analyser_width, height = analyser_height,
+ order = 1)
+AT (0, 0, 0) RELATIVE ana_arm11
+ROTATED (0, -A5, 0) RELATIVE ana_arm11
+GROUP analysers
+
+COMPONENT monochromator12 = Monochromator_curved(
+ gap = analyser_gap, NH = analyser_NH,
+ NV = analyser_NV, mosaich = analyser_mosaic_h,
+ mosaicv = analyser_mosaic_v, r0 = 0.99,
+ t0 = 1.0, RV = analyser_RV,
+ RH = analyser_RH, DM = analyser_d,
+ width = analyser_width, height = analyser_height,
+ order = 1)
+AT (0, 0, 0) RELATIVE ana_arm12
+ROTATED (0, -A5, 0) RELATIVE ana_arm12
+GROUP analysers
+
+COMPONENT monochromator13 = Monochromator_curved(
+ gap = analyser_gap, NH = analyser_NH,
+ NV = analyser_NV, mosaich = analyser_mosaic_h,
+ mosaicv = analyser_mosaic_v, r0 = 0.99,
+ t0 = 1.0, RV = analyser_RV,
+ RH = analyser_RH, DM = analyser_d,
+ width = analyser_width, height = analyser_height,
+ order = 1)
+AT (0, 0, 0) RELATIVE ana_arm13
+ROTATED (0, -A5, 0) RELATIVE ana_arm13
+GROUP analysers
+
+COMPONENT monochromator14 = Monochromator_curved(
+ gap = analyser_gap, NH = analyser_NH,
+ NV = analyser_NV, mosaich = analyser_mosaic_h,
+ mosaicv = analyser_mosaic_v, r0 = 0.99,
+ t0 = 1.0, RV = analyser_RV,
+ RH = analyser_RH, DM = analyser_d,
+ width = analyser_width, height = analyser_height,
+ order = 1)
+AT (0, 0, 0) RELATIVE ana_arm14
+ROTATED (0, -A5, 0) RELATIVE ana_arm14
+GROUP analysers
+
+COMPONENT monochromator15 = Monochromator_curved(
+ gap = analyser_gap, NH = analyser_NH,
+ NV = analyser_NV, mosaich = analyser_mosaic_h,
+ mosaicv = analyser_mosaic_v, r0 = 0.99,
+ t0 = 1.0, RV = analyser_RV,
+ RH = analyser_RH, DM = analyser_d,
+ width = analyser_width, height = analyser_height,
+ order = 1)
+AT (0, 0, 0) RELATIVE ana_arm15
+ROTATED (0, -A5, 0) RELATIVE ana_arm15
+GROUP analysers
+
+COMPONENT monochromator16 = Monochromator_curved(
+ gap = analyser_gap, NH = analyser_NH,
+ NV = analyser_NV, mosaich = analyser_mosaic_h,
+ mosaicv = analyser_mosaic_v, r0 = 0.99,
+ t0 = 1.0, RV = analyser_RV,
+ RH = analyser_RH, DM = analyser_d,
+ width = analyser_width, height = analyser_height,
+ order = 1)
+AT (0, 0, 0) RELATIVE ana_arm16
+ROTATED (0, -A5, 0) RELATIVE ana_arm16
+GROUP analysers
+
+COMPONENT monochromator17 = Monochromator_curved(
+ gap = analyser_gap, NH = analyser_NH,
+ NV = analyser_NV, mosaich = analyser_mosaic_h,
+ mosaicv = analyser_mosaic_v, r0 = 0.99,
+ t0 = 1.0, RV = analyser_RV,
+ RH = analyser_RH, DM = analyser_d,
+ width = analyser_width, height = analyser_height,
+ order = 1)
+AT (0, 0, 0) RELATIVE ana_arm17
+ROTATED (0, -A5, 0) RELATIVE ana_arm17
+GROUP analysers
+
+COMPONENT monochromator18 = Monochromator_curved(
+ gap = analyser_gap, NH = analyser_NH,
+ NV = analyser_NV, mosaich = analyser_mosaic_h,
+ mosaicv = analyser_mosaic_v, r0 = 0.99,
+ t0 = 1.0, RV = analyser_RV,
+ RH = analyser_RH, DM = analyser_d,
+ width = analyser_width, height = analyser_height,
+ order = 1)
+AT (0, 0, 0) RELATIVE ana_arm18
+ROTATED (0, -A5, 0) RELATIVE ana_arm18
+GROUP analysers
+
+COMPONENT monochromator19 = Monochromator_curved(
+ gap = analyser_gap, NH = analyser_NH,
+ NV = analyser_NV, mosaich = analyser_mosaic_h,
+ mosaicv = analyser_mosaic_v, r0 = 0.99,
+ t0 = 1.0, RV = analyser_RV,
+ RH = analyser_RH, DM = analyser_d,
+ width = analyser_width, height = analyser_height,
+ order = 1)
+AT (0, 0, 0) RELATIVE ana_arm19
+ROTATED (0, -A5, 0) RELATIVE ana_arm19
+GROUP analysers
+
+COMPONENT monochromator20 = Monochromator_curved(
+ gap = analyser_gap, NH = analyser_NH,
+ NV = analyser_NV, mosaich = analyser_mosaic_h,
+ mosaicv = analyser_mosaic_v, r0 = 0.99,
+ t0 = 1.0, RV = analyser_RV,
+ RH = analyser_RH, DM = analyser_d,
+ width = analyser_width, height = analyser_height,
+ order = 1)
+AT (0, 0, 0) RELATIVE ana_arm20
+ROTATED (0, -A5, 0) RELATIVE ana_arm20
+GROUP analysers
+
+COMPONENT monochromator21 = Monochromator_curved(
+ gap = analyser_gap, NH = analyser_NH,
+ NV = analyser_NV, mosaich = analyser_mosaic_h,
+ mosaicv = analyser_mosaic_v, r0 = 0.99,
+ t0 = 1.0, RV = analyser_RV,
+ RH = analyser_RH, DM = analyser_d,
+ width = analyser_width, height = analyser_height,
+ order = 1)
+AT (0, 0, 0) RELATIVE ana_arm21
+ROTATED (0, -A5, 0) RELATIVE ana_arm21
+GROUP analysers
+
+COMPONENT monochromator22 = Monochromator_curved(
+ gap = analyser_gap, NH = analyser_NH,
+ NV = analyser_NV, mosaich = analyser_mosaic_h,
+ mosaicv = analyser_mosaic_v, r0 = 0.99,
+ t0 = 1.0, RV = analyser_RV,
+ RH = analyser_RH, DM = analyser_d,
+ width = analyser_width, height = analyser_height,
+ order = 1)
+AT (0, 0, 0) RELATIVE ana_arm22
+ROTATED (0, -A5, 0) RELATIVE ana_arm22
+GROUP analysers
+
+COMPONENT monochromator23 = Monochromator_curved(
+ gap = analyser_gap, NH = analyser_NH,
+ NV = analyser_NV, mosaich = analyser_mosaic_h,
+ mosaicv = analyser_mosaic_v, r0 = 0.99,
+ t0 = 1.0, RV = analyser_RV,
+ RH = analyser_RH, DM = analyser_d,
+ width = analyser_width, height = analyser_height,
+ order = 1)
+AT (0, 0, 0) RELATIVE ana_arm23
+ROTATED (0, -A5, 0) RELATIVE ana_arm23
+GROUP analysers
+
+COMPONENT monochromator24 = Monochromator_curved(
+ gap = analyser_gap, NH = analyser_NH,
+ NV = analyser_NV, mosaich = analyser_mosaic_h,
+ mosaicv = analyser_mosaic_v, r0 = 0.99,
+ t0 = 1.0, RV = analyser_RV,
+ RH = analyser_RH, DM = analyser_d,
+ width = analyser_width, height = analyser_height,
+ order = 1)
+AT (0, 0, 0) RELATIVE ana_arm24
+ROTATED (0, -A5, 0) RELATIVE ana_arm24
+GROUP analysers
+
+COMPONENT monochromator25 = Monochromator_curved(
+ gap = analyser_gap, NH = analyser_NH,
+ NV = analyser_NV, mosaich = analyser_mosaic_h,
+ mosaicv = analyser_mosaic_v, r0 = 0.99,
+ t0 = 1.0, RV = analyser_RV,
+ RH = analyser_RH, DM = analyser_d,
+ width = analyser_width, height = analyser_height,
+ order = 1)
+AT (0, 0, 0) RELATIVE ana_arm25
+ROTATED (0, -A5, 0) RELATIVE ana_arm25
+GROUP analysers
+
+COMPONENT monochromator26 = Monochromator_curved(
+ gap = analyser_gap, NH = analyser_NH,
+ NV = analyser_NV, mosaich = analyser_mosaic_h,
+ mosaicv = analyser_mosaic_v, r0 = 0.99,
+ t0 = 1.0, RV = analyser_RV,
+ RH = analyser_RH, DM = analyser_d,
+ width = analyser_width, height = analyser_height,
+ order = 1)
+AT (0, 0, 0) RELATIVE ana_arm26
+ROTATED (0, -A5, 0) RELATIVE ana_arm26
+GROUP analysers
+
+COMPONENT monochromator27 = Monochromator_curved(
+ gap = analyser_gap, NH = analyser_NH,
+ NV = analyser_NV, mosaich = analyser_mosaic_h,
+ mosaicv = analyser_mosaic_v, r0 = 0.99,
+ t0 = 1.0, RV = analyser_RV,
+ RH = analyser_RH, DM = analyser_d,
+ width = analyser_width, height = analyser_height,
+ order = 1)
+AT (0, 0, 0) RELATIVE ana_arm27
+ROTATED (0, -A5, 0) RELATIVE ana_arm27
+GROUP analysers
+
+COMPONENT monochromator28 = Monochromator_curved(
+ gap = analyser_gap, NH = analyser_NH,
+ NV = analyser_NV, mosaich = analyser_mosaic_h,
+ mosaicv = analyser_mosaic_v, r0 = 0.99,
+ t0 = 1.0, RV = analyser_RV,
+ RH = analyser_RH, DM = analyser_d,
+ width = analyser_width, height = analyser_height,
+ order = 1)
+AT (0, 0, 0) RELATIVE ana_arm28
+ROTATED (0, -A5, 0) RELATIVE ana_arm28
+GROUP analysers
+
+COMPONENT monochromator29 = Monochromator_curved(
+ gap = analyser_gap, NH = analyser_NH,
+ NV = analyser_NV, mosaich = analyser_mosaic_h,
+ mosaicv = analyser_mosaic_v, r0 = 0.99,
+ t0 = 1.0, RV = analyser_RV,
+ RH = analyser_RH, DM = analyser_d,
+ width = analyser_width, height = analyser_height,
+ order = 1)
+AT (0, 0, 0) RELATIVE ana_arm29
+ROTATED (0, -A5, 0) RELATIVE ana_arm29
+GROUP analysers
+
+COMPONENT det_arm0 = Arm()
+AT (0, 0, 0) RELATIVE ana_arm0
+ROTATED (0, -90, 0) RELATIVE ana_arm0
+
+COMPONENT det_arm1 = Arm()
+AT (0, 0, 0) RELATIVE ana_arm1
+ROTATED (0, -90, 0) RELATIVE ana_arm1
+
+COMPONENT det_arm2 = Arm()
+AT (0, 0, 0) RELATIVE ana_arm2
+ROTATED (0, -90, 0) RELATIVE ana_arm2
+
+COMPONENT det_arm3 = Arm()
+AT (0, 0, 0) RELATIVE ana_arm3
+ROTATED (0, -90, 0) RELATIVE ana_arm3
+
+COMPONENT det_arm4 = Arm()
+AT (0, 0, 0) RELATIVE ana_arm4
+ROTATED (0, -90, 0) RELATIVE ana_arm4
+
+COMPONENT det_arm5 = Arm()
+AT (0, 0, 0) RELATIVE ana_arm5
+ROTATED (0, -90, 0) RELATIVE ana_arm5
+
+COMPONENT det_arm6 = Arm()
+AT (0, 0, 0) RELATIVE ana_arm6
+ROTATED (0, -90, 0) RELATIVE ana_arm6
+
+COMPONENT det_arm7 = Arm()
+AT (0, 0, 0) RELATIVE ana_arm7
+ROTATED (0, -90, 0) RELATIVE ana_arm7
+
+COMPONENT det_arm8 = Arm()
+AT (0, 0, 0) RELATIVE ana_arm8
+ROTATED (0, -90, 0) RELATIVE ana_arm8
+
+COMPONENT det_arm9 = Arm()
+AT (0, 0, 0) RELATIVE ana_arm9
+ROTATED (0, -90, 0) RELATIVE ana_arm9
+
+COMPONENT det_arm10 = Arm()
+AT (0, 0, 0) RELATIVE ana_arm10
+ROTATED (0, -90, 0) RELATIVE ana_arm10
+
+COMPONENT det_arm11 = Arm()
+AT (0, 0, 0) RELATIVE ana_arm11
+ROTATED (0, -90, 0) RELATIVE ana_arm11
+
+COMPONENT det_arm12 = Arm()
+AT (0, 0, 0) RELATIVE ana_arm12
+ROTATED (0, -90, 0) RELATIVE ana_arm12
+
+COMPONENT det_arm13 = Arm()
+AT (0, 0, 0) RELATIVE ana_arm13
+ROTATED (0, -90, 0) RELATIVE ana_arm13
+
+COMPONENT det_arm14 = Arm()
+AT (0, 0, 0) RELATIVE ana_arm14
+ROTATED (0, -90, 0) RELATIVE ana_arm14
+
+COMPONENT det_arm15 = Arm()
+AT (0, 0, 0) RELATIVE ana_arm15
+ROTATED (0, -90, 0) RELATIVE ana_arm15
+
+COMPONENT det_arm16 = Arm()
+AT (0, 0, 0) RELATIVE ana_arm16
+ROTATED (0, -90, 0) RELATIVE ana_arm16
+
+COMPONENT det_arm17 = Arm()
+AT (0, 0, 0) RELATIVE ana_arm17
+ROTATED (0, -90, 0) RELATIVE ana_arm17
+
+COMPONENT det_arm18 = Arm()
+AT (0, 0, 0) RELATIVE ana_arm18
+ROTATED (0, -90, 0) RELATIVE ana_arm18
+
+COMPONENT det_arm19 = Arm()
+AT (0, 0, 0) RELATIVE ana_arm19
+ROTATED (0, -90, 0) RELATIVE ana_arm19
+
+COMPONENT det_arm20 = Arm()
+AT (0, 0, 0) RELATIVE ana_arm20
+ROTATED (0, -90, 0) RELATIVE ana_arm20
+
+COMPONENT det_arm21 = Arm()
+AT (0, 0, 0) RELATIVE ana_arm21
+ROTATED (0, -90, 0) RELATIVE ana_arm21
+
+COMPONENT det_arm22 = Arm()
+AT (0, 0, 0) RELATIVE ana_arm22
+ROTATED (0, -90, 0) RELATIVE ana_arm22
+
+COMPONENT det_arm23 = Arm()
+AT (0, 0, 0) RELATIVE ana_arm23
+ROTATED (0, -90, 0) RELATIVE ana_arm23
+
+COMPONENT det_arm24 = Arm()
+AT (0, 0, 0) RELATIVE ana_arm24
+ROTATED (0, -90, 0) RELATIVE ana_arm24
+
+COMPONENT det_arm25 = Arm()
+AT (0, 0, 0) RELATIVE ana_arm25
+ROTATED (0, -90, 0) RELATIVE ana_arm25
+
+COMPONENT det_arm26 = Arm()
+AT (0, 0, 0) RELATIVE ana_arm26
+ROTATED (0, -90, 0) RELATIVE ana_arm26
+
+COMPONENT det_arm27 = Arm()
+AT (0, 0, 0) RELATIVE ana_arm27
+ROTATED (0, -90, 0) RELATIVE ana_arm27
+
+COMPONENT det_arm28 = Arm()
+AT (0, 0, 0) RELATIVE ana_arm28
+ROTATED (0, -90, 0) RELATIVE ana_arm28
+
+COMPONENT det_arm29 = Arm()
+AT (0, 0, 0) RELATIVE ana_arm29
+ROTATED (0, -90, 0) RELATIVE ana_arm29
+
+COMPONENT det_pos0 = Arm()
+AT (0, 0, analyser_detector_distance/2.0) RELATIVE det_arm0
+ROTATED (0, 0, 90) RELATIVE det_arm0
+
+COMPONENT det_pos1 = Arm()
+AT (0, 0, analyser_detector_distance/2.0) RELATIVE det_arm1
+ROTATED (0, 0, 90) RELATIVE det_arm1
+
+COMPONENT det_pos2 = Arm()
+AT (0, 0, analyser_detector_distance/2.0) RELATIVE det_arm2
+ROTATED (0, 0, 90) RELATIVE det_arm2
+
+COMPONENT det_pos3 = Arm()
+AT (0, 0, analyser_detector_distance/2.0) RELATIVE det_arm3
+ROTATED (0, 0, 90) RELATIVE det_arm3
+
+COMPONENT det_pos4 = Arm()
+AT (0, 0, analyser_detector_distance/2.0) RELATIVE det_arm4
+ROTATED (0, 0, 90) RELATIVE det_arm4
+
+COMPONENT det_pos5 = Arm()
+AT (0, 0, analyser_detector_distance/2.0) RELATIVE det_arm5
+ROTATED (0, 0, 90) RELATIVE det_arm5
+
+COMPONENT det_pos6 = Arm()
+AT (0, 0, analyser_detector_distance/2.0) RELATIVE det_arm6
+ROTATED (0, 0, 90) RELATIVE det_arm6
+
+COMPONENT det_pos7 = Arm()
+AT (0, 0, analyser_detector_distance/2.0) RELATIVE det_arm7
+ROTATED (0, 0, 90) RELATIVE det_arm7
+
+COMPONENT det_pos8 = Arm()
+AT (0, 0, analyser_detector_distance/2.0) RELATIVE det_arm8
+ROTATED (0, 0, 90) RELATIVE det_arm8
+
+COMPONENT det_pos9 = Arm()
+AT (0, 0, analyser_detector_distance/2.0) RELATIVE det_arm9
+ROTATED (0, 0, 90) RELATIVE det_arm9
+
+COMPONENT det_pos10 = Arm()
+AT (0, 0, analyser_detector_distance/2.0) RELATIVE det_arm10
+ROTATED (0, 0, 90) RELATIVE det_arm10
+
+COMPONENT det_pos11 = Arm()
+AT (0, 0, analyser_detector_distance/2.0) RELATIVE det_arm11
+ROTATED (0, 0, 90) RELATIVE det_arm11
+
+COMPONENT det_pos12 = Arm()
+AT (0, 0, analyser_detector_distance/2.0) RELATIVE det_arm12
+ROTATED (0, 0, 90) RELATIVE det_arm12
+
+COMPONENT det_pos13 = Arm()
+AT (0, 0, analyser_detector_distance/2.0) RELATIVE det_arm13
+ROTATED (0, 0, 90) RELATIVE det_arm13
+
+COMPONENT det_pos14 = Arm()
+AT (0, 0, analyser_detector_distance/2.0) RELATIVE det_arm14
+ROTATED (0, 0, 90) RELATIVE det_arm14
+
+COMPONENT det_pos15 = Arm()
+AT (0, 0, analyser_detector_distance/2.0) RELATIVE det_arm15
+ROTATED (0, 0, 90) RELATIVE det_arm15
+
+COMPONENT det_pos16 = Arm()
+AT (0, 0, analyser_detector_distance/2.0) RELATIVE det_arm16
+ROTATED (0, 0, 90) RELATIVE det_arm16
+
+COMPONENT det_pos17 = Arm()
+AT (0, 0, analyser_detector_distance/2.0) RELATIVE det_arm17
+ROTATED (0, 0, 90) RELATIVE det_arm17
+
+COMPONENT det_pos18 = Arm()
+AT (0, 0, analyser_detector_distance/2.0) RELATIVE det_arm18
+ROTATED (0, 0, 90) RELATIVE det_arm18
+
+COMPONENT det_pos19 = Arm()
+AT (0, 0, analyser_detector_distance/2.0) RELATIVE det_arm19
+ROTATED (0, 0, 90) RELATIVE det_arm19
+
+COMPONENT det_pos20 = Arm()
+AT (0, 0, analyser_detector_distance/2.0) RELATIVE det_arm20
+ROTATED (0, 0, 90) RELATIVE det_arm20
+
+COMPONENT det_pos21 = Arm()
+AT (0, 0, analyser_detector_distance/2.0) RELATIVE det_arm21
+ROTATED (0, 0, 90) RELATIVE det_arm21
+
+COMPONENT det_pos22 = Arm()
+AT (0, 0, analyser_detector_distance/2.0) RELATIVE det_arm22
+ROTATED (0, 0, 90) RELATIVE det_arm22
+
+COMPONENT det_pos23 = Arm()
+AT (0, 0, analyser_detector_distance/2.0) RELATIVE det_arm23
+ROTATED (0, 0, 90) RELATIVE det_arm23
+
+COMPONENT det_pos24 = Arm()
+AT (0, 0, analyser_detector_distance/2.0) RELATIVE det_arm24
+ROTATED (0, 0, 90) RELATIVE det_arm24
+
+COMPONENT det_pos25 = Arm()
+AT (0, 0, analyser_detector_distance/2.0) RELATIVE det_arm25
+ROTATED (0, 0, 90) RELATIVE det_arm25
+
+COMPONENT det_pos26 = Arm()
+AT (0, 0, analyser_detector_distance/2.0) RELATIVE det_arm26
+ROTATED (0, 0, 90) RELATIVE det_arm26
+
+COMPONENT det_pos27 = Arm()
+AT (0, 0, analyser_detector_distance/2.0) RELATIVE det_arm27
+ROTATED (0, 0, 90) RELATIVE det_arm27
+
+COMPONENT det_pos28 = Arm()
+AT (0, 0, analyser_detector_distance/2.0) RELATIVE det_arm28
+ROTATED (0, 0, 90) RELATIVE det_arm28
+
+COMPONENT det_pos29 = Arm()
+AT (0, 0, analyser_detector_distance/2.0) RELATIVE det_arm29
+ROTATED (0, 0, 90) RELATIVE det_arm29
+
+COMPONENT collim0 = Slit(
+ xwidth = detector_x/2.0, yheight = detector_y/2.0)
+AT (0, 0, 0) RELATIVE det_pos0
+GROUP Slits
+
+COMPONENT collim1 = Slit(
+ xwidth = detector_x/2.0, yheight = detector_y/2.0)
+AT (0, 0, 0) RELATIVE det_pos1
+GROUP Slits
+
+COMPONENT collim2 = Slit(
+ xwidth = detector_x/2.0, yheight = detector_y/2.0)
+AT (0, 0, 0) RELATIVE det_pos2
+GROUP Slits
+
+COMPONENT collim3 = Slit(
+ xwidth = detector_x/2.0, yheight = detector_y/2.0)
+AT (0, 0, 0) RELATIVE det_pos3
+GROUP Slits
+
+COMPONENT collim4 = Slit(
+ xwidth = detector_x/2.0, yheight = detector_y/2.0)
+AT (0, 0, 0) RELATIVE det_pos4
+GROUP Slits
+
+COMPONENT collim5 = Slit(
+ xwidth = detector_x/2.0, yheight = detector_y/2.0)
+AT (0, 0, 0) RELATIVE det_pos5
+GROUP Slits
+
+COMPONENT collim6 = Slit(
+ xwidth = detector_x/2.0, yheight = detector_y/2.0)
+AT (0, 0, 0) RELATIVE det_pos6
+GROUP Slits
+
+COMPONENT collim7 = Slit(
+ xwidth = detector_x/2.0, yheight = detector_y/2.0)
+AT (0, 0, 0) RELATIVE det_pos7
+GROUP Slits
+
+COMPONENT collim8 = Slit(
+ xwidth = detector_x/2.0, yheight = detector_y/2.0)
+AT (0, 0, 0) RELATIVE det_pos8
+GROUP Slits
+
+COMPONENT collim9 = Slit(
+ xwidth = detector_x/2.0, yheight = detector_y/2.0)
+AT (0, 0, 0) RELATIVE det_pos9
+GROUP Slits
+
+COMPONENT collim10 = Slit(
+ xwidth = detector_x/2.0, yheight = detector_y/2.0)
+AT (0, 0, 0) RELATIVE det_pos10
+GROUP Slits
+
+COMPONENT collim11 = Slit(
+ xwidth = detector_x/2.0, yheight = detector_y/2.0)
+AT (0, 0, 0) RELATIVE det_pos11
+GROUP Slits
+
+COMPONENT collim12 = Slit(
+ xwidth = detector_x/2.0, yheight = detector_y/2.0)
+AT (0, 0, 0) RELATIVE det_pos12
+GROUP Slits
+
+COMPONENT collim13 = Slit(
+ xwidth = detector_x/2.0, yheight = detector_y/2.0)
+AT (0, 0, 0) RELATIVE det_pos13
+GROUP Slits
+
+COMPONENT collim14 = Slit(
+ xwidth = detector_x/2.0, yheight = detector_y/2.0)
+AT (0, 0, 0) RELATIVE det_pos14
+GROUP Slits
+
+COMPONENT collim15 = Slit(
+ xwidth = detector_x/2.0, yheight = detector_y/2.0)
+AT (0, 0, 0) RELATIVE det_pos15
+GROUP Slits
+
+COMPONENT collim16 = Slit(
+ xwidth = detector_x/2.0, yheight = detector_y/2.0)
+AT (0, 0, 0) RELATIVE det_pos16
+GROUP Slits
+
+COMPONENT collim17 = Slit(
+ xwidth = detector_x/2.0, yheight = detector_y/2.0)
+AT (0, 0, 0) RELATIVE det_pos17
+GROUP Slits
+
+COMPONENT collim18 = Slit(
+ xwidth = detector_x/2.0, yheight = detector_y/2.0)
+AT (0, 0, 0) RELATIVE det_pos18
+GROUP Slits
+
+COMPONENT collim19 = Slit(
+ xwidth = detector_x/2.0, yheight = detector_y/2.0)
+AT (0, 0, 0) RELATIVE det_pos19
+GROUP Slits
+
+COMPONENT collim20 = Slit(
+ xwidth = detector_x/2.0, yheight = detector_y/2.0)
+AT (0, 0, 0) RELATIVE det_pos20
+GROUP Slits
+
+COMPONENT collim21 = Slit(
+ xwidth = detector_x/2.0, yheight = detector_y/2.0)
+AT (0, 0, 0) RELATIVE det_pos21
+GROUP Slits
+
+COMPONENT collim22 = Slit(
+ xwidth = detector_x/2.0, yheight = detector_y/2.0)
+AT (0, 0, 0) RELATIVE det_pos22
+GROUP Slits
+
+COMPONENT collim23 = Slit(
+ xwidth = detector_x/2.0, yheight = detector_y/2.0)
+AT (0, 0, 0) RELATIVE det_pos23
+GROUP Slits
+
+COMPONENT collim24 = Slit(
+ xwidth = detector_x/2.0, yheight = detector_y/2.0)
+AT (0, 0, 0) RELATIVE det_pos24
+GROUP Slits
+
+COMPONENT collim25 = Slit(
+ xwidth = detector_x/2.0, yheight = detector_y/2.0)
+AT (0, 0, 0) RELATIVE det_pos25
+GROUP Slits
+
+COMPONENT collim26 = Slit(
+ xwidth = detector_x/2.0, yheight = detector_y/2.0)
+AT (0, 0, 0) RELATIVE det_pos26
+GROUP Slits
+
+COMPONENT collim27 = Slit(
+ xwidth = detector_x/2.0, yheight = detector_y/2.0)
+AT (0, 0, 0) RELATIVE det_pos27
+GROUP Slits
+
+COMPONENT collim28 = Slit(
+ xwidth = detector_x/2.0, yheight = detector_y/2.0)
+AT (0, 0, 0) RELATIVE det_pos28
+GROUP Slits
+
+COMPONENT collim29 = Slit(
+ xwidth = detector_x/2.0, yheight = detector_y/2.0)
+AT (0, 0, 0) RELATIVE det_pos29
+GROUP Slits
+
+COMPONENT tube1_det0 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube1_det0.dat")
+AT (-detector_x/4.0 - 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos0
+ROTATED (0, 0, 0) RELATIVE det_pos0
+GROUP Detectors
+
+COMPONENT tube1_det1 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube1_det1.dat")
+AT (-detector_x/4.0 - 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos1
+ROTATED (0, 0, 0) RELATIVE det_pos1
+GROUP Detectors
+
+COMPONENT tube1_det2 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube1_det2.dat")
+AT (-detector_x/4.0 - 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos2
+ROTATED (0, 0, 0) RELATIVE det_pos2
+GROUP Detectors
+
+COMPONENT tube1_det3 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube1_det3.dat")
+AT (-detector_x/4.0 - 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos3
+ROTATED (0, 0, 0) RELATIVE det_pos3
+GROUP Detectors
+
+COMPONENT tube1_det4 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube1_det4.dat")
+AT (-detector_x/4.0 - 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos4
+ROTATED (0, 0, 0) RELATIVE det_pos4
+GROUP Detectors
+
+COMPONENT tube1_det5 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube1_det5.dat")
+AT (-detector_x/4.0 - 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos5
+ROTATED (0, 0, 0) RELATIVE det_pos5
+GROUP Detectors
+
+COMPONENT tube1_det6 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube1_det6.dat")
+AT (-detector_x/4.0 - 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos6
+ROTATED (0, 0, 0) RELATIVE det_pos6
+GROUP Detectors
+
+COMPONENT tube1_det7 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube1_det7.dat")
+AT (-detector_x/4.0 - 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos7
+ROTATED (0, 0, 0) RELATIVE det_pos7
+GROUP Detectors
+
+COMPONENT tube1_det8 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube1_det8.dat")
+AT (-detector_x/4.0 - 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos8
+ROTATED (0, 0, 0) RELATIVE det_pos8
+GROUP Detectors
+
+COMPONENT tube1_det9 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube1_det9.dat")
+AT (-detector_x/4.0 - 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos9
+ROTATED (0, 0, 0) RELATIVE det_pos9
+GROUP Detectors
+
+COMPONENT tube1_det10 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube1_det10.dat")
+AT (-detector_x/4.0 - 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos10
+ROTATED (0, 0, 0) RELATIVE det_pos10
+GROUP Detectors
+
+COMPONENT tube1_det11 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube1_det11.dat")
+AT (-detector_x/4.0 - 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos11
+ROTATED (0, 0, 0) RELATIVE det_pos11
+GROUP Detectors
+
+COMPONENT tube1_det12 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube1_det12.dat")
+AT (-detector_x/4.0 - 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos12
+ROTATED (0, 0, 0) RELATIVE det_pos12
+GROUP Detectors
+
+COMPONENT tube1_det13 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube1_det13.dat")
+AT (-detector_x/4.0 - 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos13
+ROTATED (0, 0, 0) RELATIVE det_pos13
+GROUP Detectors
+
+COMPONENT tube1_det14 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube1_det14.dat")
+AT (-detector_x/4.0 - 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos14
+ROTATED (0, 0, 0) RELATIVE det_pos14
+GROUP Detectors
+
+COMPONENT tube1_det15 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube1_det15.dat")
+AT (-detector_x/4.0 - 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos15
+ROTATED (0, 0, 0) RELATIVE det_pos15
+GROUP Detectors
+
+COMPONENT tube1_det16 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube1_det16.dat")
+AT (-detector_x/4.0 - 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos16
+ROTATED (0, 0, 0) RELATIVE det_pos16
+GROUP Detectors
+
+COMPONENT tube1_det17 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube1_det17.dat")
+AT (-detector_x/4.0 - 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos17
+ROTATED (0, 0, 0) RELATIVE det_pos17
+GROUP Detectors
+
+COMPONENT tube1_det18 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube1_det18.dat")
+AT (-detector_x/4.0 - 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos18
+ROTATED (0, 0, 0) RELATIVE det_pos18
+GROUP Detectors
+
+COMPONENT tube1_det19 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube1_det19.dat")
+AT (-detector_x/4.0 - 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos19
+ROTATED (0, 0, 0) RELATIVE det_pos19
+GROUP Detectors
+
+COMPONENT tube1_det20 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube1_det20.dat")
+AT (-detector_x/4.0 - 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos20
+ROTATED (0, 0, 0) RELATIVE det_pos20
+GROUP Detectors
+
+COMPONENT tube1_det21 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube1_det21.dat")
+AT (-detector_x/4.0 - 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos21
+ROTATED (0, 0, 0) RELATIVE det_pos21
+GROUP Detectors
+
+COMPONENT tube1_det22 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube1_det22.dat")
+AT (-detector_x/4.0 - 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos22
+ROTATED (0, 0, 0) RELATIVE det_pos22
+GROUP Detectors
+
+COMPONENT tube1_det23 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube1_det23.dat")
+AT (-detector_x/4.0 - 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos23
+ROTATED (0, 0, 0) RELATIVE det_pos23
+GROUP Detectors
+
+COMPONENT tube1_det24 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube1_det24.dat")
+AT (-detector_x/4.0 - 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos24
+ROTATED (0, 0, 0) RELATIVE det_pos24
+GROUP Detectors
+
+COMPONENT tube1_det25 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube1_det25.dat")
+AT (-detector_x/4.0 - 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos25
+ROTATED (0, 0, 0) RELATIVE det_pos25
+GROUP Detectors
+
+COMPONENT tube1_det26 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube1_det26.dat")
+AT (-detector_x/4.0 - 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos26
+ROTATED (0, 0, 0) RELATIVE det_pos26
+GROUP Detectors
+
+COMPONENT tube1_det27 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube1_det27.dat")
+AT (-detector_x/4.0 - 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos27
+ROTATED (0, 0, 0) RELATIVE det_pos27
+GROUP Detectors
+
+COMPONENT tube1_det28 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube1_det28.dat")
+AT (-detector_x/4.0 - 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos28
+ROTATED (0, 0, 0) RELATIVE det_pos28
+GROUP Detectors
+
+COMPONENT tube1_det29 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube1_det29.dat")
+AT (-detector_x/4.0 - 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos29
+ROTATED (0, 0, 0) RELATIVE det_pos29
+GROUP Detectors
+
+COMPONENT tube2_det0 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube2_det0.dat")
+AT (detector_x/4.0 + 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos0
+ROTATED (0, 0, 0) RELATIVE det_pos0
+GROUP Detectors
+
+COMPONENT tube2_det1 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube2_det1.dat")
+AT (detector_x/4.0 + 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos1
+ROTATED (0, 0, 0) RELATIVE det_pos1
+GROUP Detectors
+
+COMPONENT tube2_det2 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube2_det2.dat")
+AT (detector_x/4.0 + 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos2
+ROTATED (0, 0, 0) RELATIVE det_pos2
+GROUP Detectors
+
+COMPONENT tube2_det3 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube2_det3.dat")
+AT (detector_x/4.0 + 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos3
+ROTATED (0, 0, 0) RELATIVE det_pos3
+GROUP Detectors
+
+COMPONENT tube2_det4 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube2_det4.dat")
+AT (detector_x/4.0 + 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos4
+ROTATED (0, 0, 0) RELATIVE det_pos4
+GROUP Detectors
+
+COMPONENT tube2_det5 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube2_det5.dat")
+AT (detector_x/4.0 + 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos5
+ROTATED (0, 0, 0) RELATIVE det_pos5
+GROUP Detectors
+
+COMPONENT tube2_det6 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube2_det6.dat")
+AT (detector_x/4.0 + 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos6
+ROTATED (0, 0, 0) RELATIVE det_pos6
+GROUP Detectors
+
+COMPONENT tube2_det7 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube2_det7.dat")
+AT (detector_x/4.0 + 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos7
+ROTATED (0, 0, 0) RELATIVE det_pos7
+GROUP Detectors
+
+COMPONENT tube2_det8 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube2_det8.dat")
+AT (detector_x/4.0 + 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos8
+ROTATED (0, 0, 0) RELATIVE det_pos8
+GROUP Detectors
+
+COMPONENT tube2_det9 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube2_det9.dat")
+AT (detector_x/4.0 + 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos9
+ROTATED (0, 0, 0) RELATIVE det_pos9
+GROUP Detectors
+
+COMPONENT tube2_det10 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube2_det10.dat")
+AT (detector_x/4.0 + 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos10
+ROTATED (0, 0, 0) RELATIVE det_pos10
+GROUP Detectors
+
+COMPONENT tube2_det11 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube2_det11.dat")
+AT (detector_x/4.0 + 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos11
+ROTATED (0, 0, 0) RELATIVE det_pos11
+GROUP Detectors
+
+COMPONENT tube2_det12 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube2_det12.dat")
+AT (detector_x/4.0 + 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos12
+ROTATED (0, 0, 0) RELATIVE det_pos12
+GROUP Detectors
+
+COMPONENT tube2_det13 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube2_det13.dat")
+AT (detector_x/4.0 + 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos13
+ROTATED (0, 0, 0) RELATIVE det_pos13
+GROUP Detectors
+
+COMPONENT tube2_det14 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube2_det14.dat")
+AT (detector_x/4.0 + 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos14
+ROTATED (0, 0, 0) RELATIVE det_pos14
+GROUP Detectors
+
+COMPONENT tube2_det15 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube2_det15.dat")
+AT (detector_x/4.0 + 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos15
+ROTATED (0, 0, 0) RELATIVE det_pos15
+GROUP Detectors
+
+COMPONENT tube2_det16 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube2_det16.dat")
+AT (detector_x/4.0 + 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos16
+ROTATED (0, 0, 0) RELATIVE det_pos16
+GROUP Detectors
+
+COMPONENT tube2_det17 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube2_det17.dat")
+AT (detector_x/4.0 + 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos17
+ROTATED (0, 0, 0) RELATIVE det_pos17
+GROUP Detectors
+
+COMPONENT tube2_det18 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube2_det18.dat")
+AT (detector_x/4.0 + 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos18
+ROTATED (0, 0, 0) RELATIVE det_pos18
+GROUP Detectors
+
+COMPONENT tube2_det19 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube2_det19.dat")
+AT (detector_x/4.0 + 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos19
+ROTATED (0, 0, 0) RELATIVE det_pos19
+GROUP Detectors
+
+COMPONENT tube2_det20 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube2_det20.dat")
+AT (detector_x/4.0 + 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos20
+ROTATED (0, 0, 0) RELATIVE det_pos20
+GROUP Detectors
+
+COMPONENT tube2_det21 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube2_det21.dat")
+AT (detector_x/4.0 + 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos21
+ROTATED (0, 0, 0) RELATIVE det_pos21
+GROUP Detectors
+
+COMPONENT tube2_det22 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube2_det22.dat")
+AT (detector_x/4.0 + 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos22
+ROTATED (0, 0, 0) RELATIVE det_pos22
+GROUP Detectors
+
+COMPONENT tube2_det23 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube2_det23.dat")
+AT (detector_x/4.0 + 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos23
+ROTATED (0, 0, 0) RELATIVE det_pos23
+GROUP Detectors
+
+COMPONENT tube2_det24 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube2_det24.dat")
+AT (detector_x/4.0 + 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos24
+ROTATED (0, 0, 0) RELATIVE det_pos24
+GROUP Detectors
+
+COMPONENT tube2_det25 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube2_det25.dat")
+AT (detector_x/4.0 + 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos25
+ROTATED (0, 0, 0) RELATIVE det_pos25
+GROUP Detectors
+
+COMPONENT tube2_det26 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube2_det26.dat")
+AT (detector_x/4.0 + 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos26
+ROTATED (0, 0, 0) RELATIVE det_pos26
+GROUP Detectors
+
+COMPONENT tube2_det27 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube2_det27.dat")
+AT (detector_x/4.0 + 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos27
+ROTATED (0, 0, 0) RELATIVE det_pos27
+GROUP Detectors
+
+COMPONENT tube2_det28 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube2_det28.dat")
+AT (detector_x/4.0 + 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos28
+ROTATED (0, 0, 0) RELATIVE det_pos28
+GROUP Detectors
+
+COMPONENT tube2_det29 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube2_det29.dat")
+AT (detector_x/4.0 + 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos29
+ROTATED (0, 0, 0) RELATIVE det_pos29
+GROUP Detectors
+
+FINALLY 
+%{
+// Start of finally for generated full_instrument
+%}
+
+END

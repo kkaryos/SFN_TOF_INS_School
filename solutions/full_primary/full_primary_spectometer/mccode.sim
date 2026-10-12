@@ -1,0 +1,146 @@
+mcstas simulation description file for full_primary_spectometer.
+Date:    Sun Oct 11 12:53:54 2026
+Program:  3.9.2, git
+
+begin instrument: full_primary_spectometer
+  File: /run/media/kyriakos2013/Crucial_X9/SCHOOL/solutions/full_primary/full_primary_spectometer/mccode
+  Source: full_primary_spectometer.instr
+  Parameters:  pulse_length(double) moderator_tau(double) moderator_n(double) source_frequency(double) lambda_min(double) lambda_max(double) l1(double) psc_order(double) opening_PSC(double) chopper_distance(double) psc_lambda_min(double) psc_lambda_max(double) lambda_band_min(double) lambda_band_max(double) guide2_length(double) l3(double) d_guide_sample(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: /run/media/kyriakos2013/Crucial_X9/SCHOOL/solutions/full_primary/full_primary_spectometer
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator:  3.9.2, git
+  Instrument: full_primary_spectometer.instr
+  Ncount: 1000000000
+  Trace: no
+  Gravitation: no
+  Seed: 1791716034099386
+  Directory: /run/media/kyriakos2013/Crucial_X9/SCHOOL/solutions/full_primary/full_primary_spectometer
+  Nodes: 12
+  Param: pulse_length=0.0004
+  Param: moderator_tau=0.00017
+  Param: moderator_n=5
+  Param: source_frequency=50
+  Param: lambda_min=0.5
+  Param: lambda_max=10
+  Param: l1=2
+  Param: psc_order=1
+  Param: opening_PSC=36
+  Param: chopper_distance=2.12
+  Param: psc_lambda_min=1
+  Param: psc_lambda_max=7
+  Param: lambda_band_min=2
+  Param: lambda_band_max=4
+  Param: guide2_length=10
+  Param: l3=23
+  Param: d_guide_sample=1.5
+end simulation
+
+begin data
+  Date: Sun Oct 11 12:55:33 2026 (1791716133)
+  type: array_1d(100)
+  Source: full_primary_spectometer (full_primary_spectometer.instr)
+  component: lambda_after_BC
+  position: 0 0 12.165
+  title: Wavelength monitor
+  Ncount: 999999996
+  filename: lambda_after_BC.dat
+  statistics: X0=3.14017; dX=0.543815;
+  signal: Min=0; Max=4.03123e+08; Mean=6.96542e+07;
+  values: 6.96542e+09 1.68976e+07 1.81784e+06
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Intensity
+  xlimits: 0.5 10
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 12:55:33 2026 (1791716133)
+  type: array_2d(100, 100)
+  Source: full_primary_spectometer (full_primary_spectometer.instr)
+  component: divergence_sample
+  position: 0 0 36.68
+  title: Divergence monitor
+  Ncount: 999999996
+  filename: divergence_sample.dat
+  statistics: X0=8.12987e-05; dX=0.30641; Y0=-0.00146952; dY=0.304972;
+  signal: Min=0; Max=7.25109e+06; Mean=236750;
+  values: 2.3675e+09 1.05116e+07 452300
+  xvar: X 
+  yvar: Y 
+  xlabel: X divergence [deg]
+  ylabel: Y divergence [deg]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -2 2 -2 2
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 12:55:33 2026 (1791716133)
+  type: array_2d(100, 100)
+  Source: full_primary_spectometer (full_primary_spectometer.instr)
+  component: psd_sample
+  position: 0 0 36.68
+  title: PSD monitor
+  Ncount: 999999996
+  filename: psd_sample.dat
+  statistics: X0=0.000462039; dX=1.46706; Y0=-0.00362762; dY=1.47424;
+  signal: Min=1.55882e-07; Max=2.8071e+06; Mean=358663;
+  values: 3.58663e+09 1.23693e+07 1.60453e+06
+  xvar: X 
+  yvar: Y 
+  xlabel: X position [cm]
+  ylabel: Y position [cm]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -5 5 -5 5
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 12:55:33 2026 (1791716133)
+  type: array_1d(1000)
+  Source: full_primary_spectometer (full_primary_spectometer.instr)
+  component: tof_sample
+  position: 0 0 36.68
+  title: Time-of-flight monitor
+  Ncount: 999999996
+  filename: tof_sample.dat
+  statistics: X0=29315.6; dX=5016.54;
+  signal: Min=0; Max=1.69464e+07; Mean=2.3675e+06;
+  values: 2.3675e+09 1.05116e+07 452300
+  xvar: t
+  yvar: (I,I_err)
+  xlabel: Time-of-flight [\gms]
+  ylabel: Intensity
+  xlimits: 0 96719.1
+  variables: t I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 12:55:33 2026 (1791716133)
+  type: array_1d(100)
+  Source: full_primary_spectometer (full_primary_spectometer.instr)
+  component: lambda_sample
+  position: 0 0 36.68
+  title: Wavelength monitor
+  Ncount: 999999996
+  filename: lambda_sample.dat
+  statistics: X0=3.11628; dX=0.545917;
+  signal: Min=0; Max=1.37297e+08; Mean=2.3675e+07;
+  values: 2.3675e+09 1.05116e+07 452300
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Intensity
+  xlimits: 0.5 10
+  variables: L I I_err N
+end data

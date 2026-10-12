@@ -1,0 +1,1384 @@
+mcstas simulation description file for full_instrument.
+Date:    Sun Oct 11 17:50:25 2026
+Program:  3.9.2, git
+
+begin instrument: full_instrument
+  File: /run/media/kyriakos2013/Crucial_X9/SCHOOL/solutions/full_instrument/full_instrument_1/mccode
+  Source: full_instrument.instr
+  Parameters:  pulse_length(double) moderator_tau(double) moderator_n(double) source_frequency(double) lambda_min(double) lambda_max(double) source_t_max(double) linx(double) liny(double) loutx(double) louty(double) guide_length(double) guide_xwidth(double) guide_yheight(double) d_source_guide(double) d_guide_sample(double) lambda_f(double) channel_angle(double) d_sample_analyser(double) analyser_d(double) analyser_width(double) analyser_height(double) analyser_mosaic_h(double) analyser_mosaic_v(double) analyser_NH(int) analyser_NV(int) analyser_gap(double) analyser_detector_distance(double) detector_x(double) detector_y(double) sample_radius(double) sample_height(double) sample_rotation_x(double) sample_rotation_y(double) sample_rotation_z(double) sample_E_tun(double) analyser_focusing(double) sample_rho(double) offset(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: /run/media/kyriakos2013/Crucial_X9/SCHOOL/solutions/full_instrument/full_instrument_1
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator:  3.9.2, git
+  Instrument: full_instrument.instr
+  Ncount: 10000000000
+  Trace: no
+  Gravitation: no
+  Seed: 1791733825098194
+  Directory: /run/media/kyriakos2013/Crucial_X9/SCHOOL/solutions/full_instrument/full_instrument_1
+  Nodes: 12
+  Param: pulse_length=0.0004
+  Param: moderator_tau=0.00017
+  Param: moderator_n=5
+  Param: source_frequency=50
+  Param: lambda_min=2
+  Param: lambda_max=4
+  Param: source_t_max=0.004
+  Param: linx=0.611423
+  Param: liny=1.04627
+  Param: loutx=1.68246
+  Param: louty=1.94531
+  Param: guide_length=35
+  Param: guide_xwidth=0.12
+  Param: guide_yheight=0.12
+  Param: d_source_guide=0.5
+  Param: d_guide_sample=1.5
+  Param: lambda_f=4
+  Param: channel_angle=30
+  Param: d_sample_analyser=0.858
+  Param: analyser_d=3.357
+  Param: analyser_width=0.07
+  Param: analyser_height=0.03
+  Param: analyser_mosaic_h=30
+  Param: analyser_mosaic_v=30
+  Param: analyser_NH=11
+  Param: analyser_NV=11
+  Param: analyser_gap=0.0005
+  Param: analyser_detector_distance=0.5
+  Param: detector_x=0.0381
+  Param: detector_y=0.5588
+  Param: sample_radius=0.01
+  Param: sample_height=0.02
+  Param: sample_rotation_x=0
+  Param: sample_rotation_y=0
+  Param: sample_rotation_z=0
+  Param: sample_E_tun=2.5
+  Param: analyser_focusing=1
+  Param: sample_rho=0.05
+  Param: offset=0
+end simulation
+
+begin data
+  Date: Sun Oct 11 21:08:20 2026 (1791745700)
+  type: array_2d(2, 1000)
+  Source: full_instrument (full_instrument.instr)
+  component: tube1_det0
+  position: 0.009625 -0.5 37.858
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 9999999996
+  filename: tube1_det0.dat
+  statistics: X0=-0.1397; dX=4.165e-09; Y0=0.032466; dY=0.00450139;
+  signal: Min=0; Max=33.8238; Mean=0.148634;
+  values: 297.268 60.1677 1592
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2794 0.2794 0.02 0.045
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 21:08:20 2026 (1791745700)
+  type: array_2d(2, 1000)
+  Source: full_instrument (full_instrument.instr)
+  component: tube1_det1
+  position: 0.0694526 -0.5 37.8552
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 9999999996
+  filename: tube1_det1.dat
+  statistics: X0=-0.1397; dX=4.9281e-09; Y0=0.032214; dY=0.0043612;
+  signal: Min=0; Max=9.25326; Mean=0.193549;
+  values: 387.098 33.0994 2050
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2794 0.2794 0.02 0.045
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 21:08:20 2026 (1791745700)
+  type: array_2d(2, 1000)
+  Source: full_instrument (full_instrument.instr)
+  component: tube1_det2
+  position: 0.128942 -0.5 37.8483
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 9999999996
+  filename: tube1_det2.dat
+  statistics: X0=-0.1397; dX=2.63418e-09; Y0=0.0319271; dY=0.00458561;
+  signal: Min=0; Max=7.74442; Mean=0.197614;
+  values: 395.228 23.9086 2806
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2794 0.2794 0.02 0.045
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 21:08:20 2026 (1791745700)
+  type: array_2d(2, 1000)
+  Source: full_instrument (full_instrument.instr)
+  component: tube1_det3
+  position: 0.187803 -0.5 37.8372
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 9999999996
+  filename: tube1_det3.dat
+  statistics: X0=-0.1397; dX=4.165e-09; Y0=0.0319721; dY=0.00461459;
+  signal: Min=0; Max=6.8412; Mean=0.20371;
+  values: 407.42 20.347 3289
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2794 0.2794 0.02 0.045
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 21:08:20 2026 (1791745700)
+  type: array_2d(2, 1000)
+  Source: full_instrument (full_instrument.instr)
+  component: tube1_det4
+  position: 0.245749 -0.5 37.8221
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 9999999996
+  filename: tube1_det4.dat
+  statistics: X0=-0.1397; dX=6.96938e-09; Y0=0.0315749; dY=0.00505019;
+  signal: Min=0; Max=6.0258; Mean=0.184335;
+  values: 368.669 17.3843 3763
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2794 0.2794 0.02 0.045
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 21:08:20 2026 (1791745700)
+  type: array_2d(2, 1000)
+  Source: full_instrument (full_instrument.instr)
+  component: tube1_det5
+  position: 0.302498 -0.5 37.803
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 9999999996
+  filename: tube1_det5.dat
+  statistics: X0=-0.1397; dX=0; Y0=0.0322879; dY=0.005002;
+  signal: Min=0; Max=4.50307; Mean=0.178467;
+  values: 356.934 15.2568 4523
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2794 0.2794 0.02 0.045
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 21:08:20 2026 (1791745700)
+  type: array_2d(2, 1000)
+  Source: full_instrument (full_instrument.instr)
+  component: tube1_det6
+  position: 0.357773 -0.5 37.7799
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 9999999996
+  filename: tube1_det6.dat
+  statistics: X0=-0.1397; dX=0; Y0=0.0330136; dY=0.00493991;
+  signal: Min=0; Max=4.16391; Mean=0.188805;
+  values: 377.611 13.9883 5341
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2794 0.2794 0.02 0.045
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 21:08:20 2026 (1791745700)
+  type: array_2d(2, 1000)
+  Source: full_instrument (full_instrument.instr)
+  component: tube1_det7
+  position: 0.411305 -0.5 37.7531
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 9999999996
+  filename: tube1_det7.dat
+  statistics: X0=-0.1397; dX=1.86265e-09; Y0=0.0331956; dY=0.00527172;
+  signal: Min=0; Max=4.93978; Mean=0.207843;
+  values: 415.685 13.9592 6372
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2794 0.2794 0.02 0.045
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 21:08:20 2026 (1791745700)
+  type: array_2d(2, 1000)
+  Source: full_instrument (full_instrument.instr)
+  component: tube1_det8
+  position: 0.462833 -0.5 37.7225
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 9999999996
+  filename: tube1_det8.dat
+  statistics: X0=-0.1397; dX=5.26836e-09; Y0=0.0345542; dY=0.00465802;
+  signal: Min=0; Max=4.47857; Mean=0.203356;
+  values: 406.712 12.2827 7511
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2794 0.2794 0.02 0.045
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 21:08:20 2026 (1791745700)
+  type: array_2d(2, 1000)
+  Source: full_instrument (full_instrument.instr)
+  component: tube1_det9
+  position: 0.512107 -0.5 37.6885
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 9999999996
+  filename: tube1_det9.dat
+  statistics: X0=-0.1397; dX=0; Y0=0.0356196; dY=0.00512145;
+  signal: Min=0; Max=4.52985; Mean=0.148271;
+  values: 296.541 9.61786 7037
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2794 0.2794 0.02 0.045
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 21:08:20 2026 (1791745700)
+  type: array_2d(2, 1000)
+  Source: full_instrument (full_instrument.instr)
+  component: tube1_det10
+  position: 0.558885 -0.5 37.6511
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 9999999996
+  filename: tube1_det10.dat
+  statistics: X0=-0.1397; dX=4.56253e-09; Y0=0.0353128; dY=0.0047387;
+  signal: Min=0; Max=4.44722; Mean=0.182509;
+  values: 365.018 10.3768 8600
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2794 0.2794 0.02 0.045
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 21:08:20 2026 (1791745700)
+  type: array_2d(2, 1000)
+  Source: full_instrument (full_instrument.instr)
+  component: tube1_det11
+  position: 0.602941 -0.5 37.6105
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 9999999996
+  filename: tube1_det11.dat
+  statistics: X0=-0.1397; dX=5.26836e-09; Y0=0.0343059; dY=0.0043152;
+  signal: Min=0; Max=3.90195; Mean=0.226082;
+  values: 452.163 11.5741 10436
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2794 0.2794 0.02 0.045
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 21:08:20 2026 (1791745700)
+  type: array_2d(2, 1000)
+  Source: full_instrument (full_instrument.instr)
+  component: tube1_det12
+  position: 0.644059 -0.5 37.567
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 9999999996
+  filename: tube1_det12.dat
+  statistics: X0=-0.1397; dX=6.45239e-09; Y0=0.0336626; dY=0.0036844;
+  signal: Min=0; Max=5.41669; Mean=0.235227;
+  values: 470.454 11.8709 10612
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2794 0.2794 0.02 0.045
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 21:08:20 2026 (1791745700)
+  type: array_2d(2, 1000)
+  Source: full_instrument (full_instrument.instr)
+  component: tube1_det13
+  position: 0.682039 -0.5 37.5207
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 9999999996
+  filename: tube1_det13.dat
+  statistics: X0=-0.1397; dX=0; Y0=0.032679; dY=0.00395347;
+  signal: Min=0; Max=4.97293; Mean=0.223393;
+  values: 446.786 11.5453 10264
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2794 0.2794 0.02 0.045
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 21:08:20 2026 (1791745700)
+  type: array_2d(2, 1000)
+  Source: full_instrument (full_instrument.instr)
+  component: tube1_det14
+  position: 0.716696 -0.5 37.4718
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 9999999996
+  filename: tube1_det14.dat
+  statistics: X0=-0.1397; dX=5.26836e-09; Y0=0.0317904; dY=0.00415365;
+  signal: Min=0; Max=4.97146; Mean=0.220084;
+  values: 440.169 11.3393 10113
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2794 0.2794 0.02 0.045
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 21:08:20 2026 (1791745700)
+  type: array_2d(2, 1000)
+  Source: full_instrument (full_instrument.instr)
+  component: tube1_det15
+  position: 0.747862 -0.5 37.4207
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 9999999996
+  filename: tube1_det15.dat
+  statistics: X0=-0.1397; dX=0; Y0=0.0316556; dY=0.00407514;
+  signal: Min=0; Max=5.19793; Mean=0.196841;
+  values: 393.682 10.6571 9693
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2794 0.2794 0.02 0.045
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 21:08:20 2026 (1791745700)
+  type: array_2d(2, 1000)
+  Source: full_instrument (full_instrument.instr)
+  component: tube1_det16
+  position: 0.775385 -0.5 37.3675
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 9999999996
+  filename: tube1_det16.dat
+  statistics: X0=-0.1397; dX=0; Y0=0.0316806; dY=0.00418279;
+  signal: Min=0; Max=4.59583; Mean=0.182054;
+  values: 364.107 9.96269 9330
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2794 0.2794 0.02 0.045
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 21:08:20 2026 (1791745700)
+  type: array_2d(2, 1000)
+  Source: full_instrument (full_instrument.instr)
+  component: tube1_det17
+  position: 0.799129 -0.5 37.3125
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 9999999996
+  filename: tube1_det17.dat
+  statistics: X0=-0.1397; dX=0; Y0=0.0313883; dY=0.00424997;
+  signal: Min=0; Max=4.67885; Mean=0.188394;
+  values: 376.789 10.16 9259
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2794 0.2794 0.02 0.045
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 21:08:20 2026 (1791745700)
+  type: array_2d(2, 1000)
+  Source: full_instrument (full_instrument.instr)
+  component: tube1_det18
+  position: 0.818981 -0.5 37.256
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 9999999996
+  filename: tube1_det18.dat
+  statistics: X0=-0.1397; dX=0; Y0=0.0314143; dY=0.00431508;
+  signal: Min=0; Max=5.17995; Mean=0.179198;
+  values: 358.395 9.85751 9153
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2794 0.2794 0.02 0.045
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 21:08:20 2026 (1791745700)
+  type: array_2d(2, 1000)
+  Source: full_instrument (full_instrument.instr)
+  component: tube1_det19
+  position: 0.834842 -0.5 37.1982
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 9999999996
+  filename: tube1_det19.dat
+  statistics: X0=-0.1397; dX=0; Y0=0.0313627; dY=0.00424961;
+  signal: Min=0; Max=4.987; Mean=0.18262;
+  values: 365.24 9.91126 9396
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2794 0.2794 0.02 0.045
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 21:08:20 2026 (1791745700)
+  type: array_2d(2, 1000)
+  Source: full_instrument (full_instrument.instr)
+  component: tube1_det20
+  position: 0.846636 -0.5 37.1395
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 9999999996
+  filename: tube1_det20.dat
+  statistics: X0=-0.1397; dX=3.72529e-09; Y0=0.0317171; dY=0.00432192;
+  signal: Min=0; Max=5.07402; Mean=0.181801;
+  values: 363.603 9.67064 9563
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2794 0.2794 0.02 0.045
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 21:08:20 2026 (1791745700)
+  type: array_2d(2, 1000)
+  Source: full_instrument (full_instrument.instr)
+  component: tube1_det21
+  position: 0.854306 -0.5 37.0801
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 9999999996
+  filename: tube1_det21.dat
+  statistics: X0=-0.1397; dX=6.96938e-09; Y0=0.0315789; dY=0.00454596;
+  signal: Min=0; Max=4.69678; Mean=0.175903;
+  values: 351.806 9.48329 9806
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2794 0.2794 0.02 0.045
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 21:08:20 2026 (1791745700)
+  type: array_2d(2, 1000)
+  Source: full_instrument (full_instrument.instr)
+  component: tube1_det22
+  position: 0.857813 -0.5 37.0203
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 9999999996
+  filename: tube1_det22.dat
+  statistics: X0=-0.1397; dX=1.86265e-09; Y0=0.0317129; dY=0.00480596;
+  signal: Min=0; Max=4.82034; Mean=0.178413;
+  values: 356.827 9.29595 10332
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2794 0.2794 0.02 0.045
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 21:08:20 2026 (1791745700)
+  type: array_2d(2, 1000)
+  Source: full_instrument (full_instrument.instr)
+  component: tube1_det23
+  position: 0.857141 -0.5 36.9604
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 9999999996
+  filename: tube1_det23.dat
+  statistics: X0=-0.1397; dX=0; Y0=0.0316555; dY=0.00505327;
+  signal: Min=0; Max=5.03482; Mean=0.184641;
+  values: 369.281 9.47755 10633
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2794 0.2794 0.02 0.045
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 21:08:20 2026 (1791745700)
+  type: array_2d(2, 1000)
+  Source: full_instrument (full_instrument.instr)
+  component: tube1_det24
+  position: 0.852294 -0.5 36.9007
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 9999999996
+  filename: tube1_det24.dat
+  statistics: X0=-0.1397; dX=3.72529e-09; Y0=0.0318004; dY=0.00503209;
+  signal: Min=0; Max=4.33509; Mean=0.192936;
+  values: 385.873 9.81154 10732
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2794 0.2794 0.02 0.045
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 21:08:20 2026 (1791745700)
+  type: array_2d(2, 1000)
+  Source: full_instrument (full_instrument.instr)
+  component: tube1_det25
+  position: 0.843294 -0.5 36.8415
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 9999999996
+  filename: tube1_det25.dat
+  statistics: X0=-0.1397; dX=0; Y0=0.0320851; dY=0.00492857;
+  signal: Min=0; Max=4.33507; Mean=0.187728;
+  values: 375.457 9.58984 10592
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2794 0.2794 0.02 0.045
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 21:08:20 2026 (1791745700)
+  type: array_2d(2, 1000)
+  Source: full_instrument (full_instrument.instr)
+  component: tube1_det26
+  position: 0.830185 -0.5 36.7831
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 9999999996
+  filename: tube1_det26.dat
+  statistics: X0=-0.1397; dX=7.45058e-09; Y0=0.0325816; dY=0.00489561;
+  signal: Min=0; Max=4.41064; Mean=0.190389;
+  values: 380.779 9.73856 10702
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2794 0.2794 0.02 0.045
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 21:08:20 2026 (1791745700)
+  type: array_2d(2, 1000)
+  Source: full_instrument (full_instrument.instr)
+  component: tube1_det27
+  position: 0.813032 -0.5 36.7257
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 9999999996
+  filename: tube1_det27.dat
+  statistics: X0=-0.1397; dX=3.2262e-09; Y0=0.0326119; dY=0.0049345;
+  signal: Min=0; Max=4.6314; Mean=0.199299;
+  values: 398.597 10.04 10922
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2794 0.2794 0.02 0.045
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 21:08:20 2026 (1791745700)
+  type: array_2d(2, 1000)
+  Source: full_instrument (full_instrument.instr)
+  component: tube1_det28
+  position: 0.791918 -0.5 36.6697
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 9999999996
+  filename: tube1_det28.dat
+  statistics: X0=-0.1397; dX=0; Y0=0.033398; dY=0.00480982;
+  signal: Min=0; Max=4.03902; Mean=0.189746;
+  values: 379.493 9.70098 10843
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2794 0.2794 0.02 0.045
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 21:08:20 2026 (1791745700)
+  type: array_2d(2, 1000)
+  Source: full_instrument (full_instrument.instr)
+  component: tube1_det29
+  position: 0.766946 -0.5 36.6152
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 9999999996
+  filename: tube1_det29.dat
+  statistics: X0=-0.1397; dX=0; Y0=0.033874; dY=0.00468654;
+  signal: Min=0; Max=3.85376; Mean=0.18437;
+  values: 368.741 9.54187 10243
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2794 0.2794 0.02 0.045
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 21:08:20 2026 (1791745700)
+  type: array_2d(2, 1000)
+  Source: full_instrument (full_instrument.instr)
+  component: tube2_det0
+  position: -0.009625 -0.5 37.858
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 9999999996
+  filename: tube2_det0.dat
+  statistics: X0=-0.1397; dX=0; Y0=0.0328684; dY=0.00397749;
+  signal: Min=0; Max=23.3768; Mean=0.203247;
+  values: 406.493 69.776 1625
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2794 0.2794 0.02 0.045
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 21:08:20 2026 (1791745700)
+  type: array_2d(2, 1000)
+  Source: full_instrument (full_instrument.instr)
+  component: tube2_det1
+  position: 0.0502495 -0.5 37.8566
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 9999999996
+  filename: tube2_det1.dat
+  statistics: X0=-0.1397; dX=0; Y0=0.0320698; dY=0.00452639;
+  signal: Min=0; Max=11.9788; Mean=0.191226;
+  values: 382.451 35.261 1995
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2794 0.2794 0.02 0.045
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 21:08:20 2026 (1791745700)
+  type: array_2d(2, 1000)
+  Source: full_instrument (full_instrument.instr)
+  component: tube2_det2
+  position: 0.109879 -0.5 37.851
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 9999999996
+  filename: tube2_det2.dat
+  statistics: X0=-0.1397; dX=2.63418e-09; Y0=0.0315679; dY=0.00473573;
+  signal: Min=0; Max=9.32107; Mean=0.210782;
+  values: 421.563 26.8048 2725
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2794 0.2794 0.02 0.045
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 21:08:20 2026 (1791745700)
+  type: array_2d(2, 1000)
+  Source: full_instrument (full_instrument.instr)
+  component: tube2_det3
+  position: 0.168974 -0.5 37.8413
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 9999999996
+  filename: tube2_det3.dat
+  statistics: X0=-0.1397; dX=6.45239e-09; Y0=0.0317089; dY=0.00471158;
+  signal: Min=0; Max=6.6391; Mean=0.199795;
+  values: 399.589 21.1464 3409
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2794 0.2794 0.02 0.045
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 21:08:20 2026 (1791745700)
+  type: array_2d(2, 1000)
+  Source: full_instrument (full_instrument.instr)
+  component: tube2_det4
+  position: 0.227245 -0.5 37.8274
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 9999999996
+  filename: tube2_det4.dat
+  statistics: X0=-0.1397; dX=0; Y0=0.0316723; dY=0.00495909;
+  signal: Min=0; Max=5.78505; Mean=0.185072;
+  values: 370.144 17.7024 3663
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2794 0.2794 0.02 0.045
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 21:08:20 2026 (1791745700)
+  type: array_2d(2, 1000)
+  Source: full_instrument (full_instrument.instr)
+  component: tube2_det5
+  position: 0.284409 -0.5 37.8095
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 9999999996
+  filename: tube2_det5.dat
+  statistics: X0=-0.1397; dX=8.33e-09; Y0=0.0320562; dY=0.00492649;
+  signal: Min=0; Max=4.87995; Mean=0.175226;
+  values: 350.452 15.418 4428
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2794 0.2794 0.02 0.045
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 21:08:20 2026 (1791745700)
+  type: array_2d(2, 1000)
+  Source: full_instrument (full_instrument.instr)
+  component: tube2_det6
+  position: 0.340187 -0.5 37.7877
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 9999999996
+  filename: tube2_det6.dat
+  statistics: X0=-0.1397; dX=0; Y0=0.0327451; dY=0.00502901;
+  signal: Min=0; Max=5.14147; Mean=0.189039;
+  values: 378.077 14.6539 5319
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2794 0.2794 0.02 0.045
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 21:08:20 2026 (1791745700)
+  type: array_2d(2, 1000)
+  Source: full_instrument (full_instrument.instr)
+  component: tube2_det7
+  position: 0.394308 -0.5 37.7621
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 9999999996
+  filename: tube2_det7.dat
+  statistics: X0=-0.1397; dX=0; Y0=0.0333579; dY=0.00501841;
+  signal: Min=0; Max=4.15064; Mean=0.202491;
+  values: 404.983 13.657 6215
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2794 0.2794 0.02 0.045
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 21:08:20 2026 (1791745700)
+  type: array_2d(2, 1000)
+  Source: full_instrument (full_instrument.instr)
+  component: tube2_det8
+  position: 0.446508 -0.5 37.7327
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 9999999996
+  filename: tube2_det8.dat
+  statistics: X0=-0.1397; dX=0; Y0=0.0341479; dY=0.00489734;
+  signal: Min=0; Max=5.40666; Mean=0.204963;
+  values: 409.926 12.802 7462
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2794 0.2794 0.02 0.045
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 21:08:20 2026 (1791745700)
+  type: array_2d(2, 1000)
+  Source: full_instrument (full_instrument.instr)
+  component: tube2_det9
+  position: 0.496533 -0.5 37.6998
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 9999999996
+  filename: tube2_det9.dat
+  statistics: X0=-0.1397; dX=0; Y0=0.0353392; dY=0.00504716;
+  signal: Min=0; Max=4.45589; Mean=0.17364;
+  values: 347.279 10.6335 7748
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2794 0.2794 0.02 0.045
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 21:08:20 2026 (1791745700)
+  type: array_2d(2, 1000)
+  Source: full_instrument (full_instrument.instr)
+  component: tube2_det10
+  position: 0.544139 -0.5 37.6635
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 9999999996
+  filename: tube2_det10.dat
+  statistics: X0=-0.1397; dX=6.45239e-09; Y0=0.0352242; dY=0.0050708;
+  signal: Min=0; Max=4.02035; Mean=0.176198;
+  values: 352.396 10.4042 8244
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2794 0.2794 0.02 0.045
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 21:08:20 2026 (1791745700)
+  type: array_2d(2, 1000)
+  Source: full_instrument (full_instrument.instr)
+  component: tube2_det11
+  position: 0.589093 -0.5 37.6239
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 9999999996
+  filename: tube2_det11.dat
+  statistics: X0=-0.1397; dX=1.86265e-09; Y0=0.0345048; dY=0.0044616;
+  signal: Min=0; Max=3.63701; Mean=0.222507;
+  values: 445.015 11.3938 10340
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2794 0.2794 0.02 0.045
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 21:08:20 2026 (1791745700)
+  type: array_2d(2, 1000)
+  Source: full_instrument (full_instrument.instr)
+  component: tube2_det12
+  position: 0.631178 -0.5 37.5813
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 9999999996
+  filename: tube2_det12.dat
+  statistics: X0=-0.1397; dX=6.45239e-09; Y0=0.0336803; dY=0.00395122;
+  signal: Min=0; Max=4.59992; Mean=0.242231;
+  values: 484.463 12.0173 11093
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2794 0.2794 0.02 0.045
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 21:08:20 2026 (1791745700)
+  type: array_2d(2, 1000)
+  Source: full_instrument (full_instrument.instr)
+  component: tube2_det13
+  position: 0.670187 -0.5 37.5358
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 9999999996
+  filename: tube2_det13.dat
+  statistics: X0=-0.1397; dX=0; Y0=0.0329332; dY=0.00355562;
+  signal: Min=0; Max=5.68893; Mean=0.238496;
+  values: 476.991 11.9104 10688
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2794 0.2794 0.02 0.045
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 21:08:20 2026 (1791745700)
+  type: array_2d(2, 1000)
+  Source: full_instrument (full_instrument.instr)
+  component: tube2_det14
+  position: 0.705932 -0.5 37.4878
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 9999999996
+  filename: tube2_det14.dat
+  statistics: X0=-0.1397; dX=0; Y0=0.0320801; dY=0.00395364;
+  signal: Min=0; Max=4.53945; Mean=0.217875;
+  values: 435.75 11.3019 10373
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2794 0.2794 0.02 0.045
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 21:08:20 2026 (1791745700)
+  type: array_2d(2, 1000)
+  Source: full_instrument (full_instrument.instr)
+  component: tube2_det15
+  position: 0.738237 -0.5 37.4373
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 9999999996
+  filename: tube2_det15.dat
+  statistics: X0=-0.1397; dX=4.9281e-09; Y0=0.0316978; dY=0.00427477;
+  signal: Min=0; Max=5.62761; Mean=0.208468;
+  values: 416.937 10.9217 9930
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2794 0.2794 0.02 0.045
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 21:08:20 2026 (1791745700)
+  type: array_2d(2, 1000)
+  Source: full_instrument (full_instrument.instr)
+  component: tube2_det16
+  position: 0.766946 -0.5 37.3848
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 9999999996
+  filename: tube2_det16.dat
+  statistics: X0=-0.1397; dX=0; Y0=0.0314184; dY=0.0040483;
+  signal: Min=0; Max=6.00487; Mean=0.201402;
+  values: 402.805 10.6676 9722
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2794 0.2794 0.02 0.045
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 21:08:20 2026 (1791745700)
+  type: array_2d(2, 1000)
+  Source: full_instrument (full_instrument.instr)
+  component: tube2_det17
+  position: 0.791918 -0.5 37.3303
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 9999999996
+  filename: tube2_det17.dat
+  statistics: X0=-0.1397; dX=1.86265e-09; Y0=0.0312869; dY=0.0042203;
+  signal: Min=0; Max=5.09716; Mean=0.193836;
+  values: 387.672 10.2393 9529
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2794 0.2794 0.02 0.045
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 21:08:20 2026 (1791745700)
+  type: array_2d(2, 1000)
+  Source: full_instrument (full_instrument.instr)
+  component: tube2_det18
+  position: 0.813032 -0.5 37.2743
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 9999999996
+  filename: tube2_det18.dat
+  statistics: X0=-0.1397; dX=3.72529e-09; Y0=0.0314037; dY=0.00421913;
+  signal: Min=0; Max=6.35697; Mean=0.186012;
+  values: 372.023 10.0127 9529
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2794 0.2794 0.02 0.045
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 21:08:20 2026 (1791745700)
+  type: array_2d(2, 1000)
+  Source: full_instrument (full_instrument.instr)
+  component: tube2_det19
+  position: 0.830185 -0.5 37.2169
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 9999999996
+  filename: tube2_det19.dat
+  statistics: X0=-0.1397; dX=0; Y0=0.0313488; dY=0.00432924;
+  signal: Min=0; Max=5.14892; Mean=0.194604;
+  values: 389.209 10.1596 9660
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2794 0.2794 0.02 0.045
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 21:08:20 2026 (1791745700)
+  type: array_2d(2, 1000)
+  Source: full_instrument (full_instrument.instr)
+  component: tube2_det20
+  position: 0.843294 -0.5 37.1585
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 9999999996
+  filename: tube2_det20.dat
+  statistics: X0=-0.1397; dX=0; Y0=0.0313671; dY=0.00428767;
+  signal: Min=0; Max=4.69032; Mean=0.184523;
+  values: 369.046 9.90606 9702
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2794 0.2794 0.02 0.045
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 21:08:20 2026 (1791745700)
+  type: array_2d(2, 1000)
+  Source: full_instrument (full_instrument.instr)
+  component: tube2_det21
+  position: 0.852294 -0.5 37.0993
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 9999999996
+  filename: tube2_det21.dat
+  statistics: X0=-0.1397; dX=2.63418e-09; Y0=0.0318295; dY=0.00442344;
+  signal: Min=0; Max=4.94906; Mean=0.186016;
+  values: 372.033 9.67582 9894
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2794 0.2794 0.02 0.045
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 21:08:20 2026 (1791745700)
+  type: array_2d(2, 1000)
+  Source: full_instrument (full_instrument.instr)
+  component: tube2_det22
+  position: 0.857141 -0.5 37.0396
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 9999999996
+  filename: tube2_det22.dat
+  statistics: X0=-0.1397; dX=3.72529e-09; Y0=0.0314596; dY=0.0048432;
+  signal: Min=0; Max=4.54693; Mean=0.189792;
+  values: 379.584 9.6775 10761
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2794 0.2794 0.02 0.045
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 21:08:20 2026 (1791745700)
+  type: array_2d(2, 1000)
+  Source: full_instrument (full_instrument.instr)
+  component: tube2_det23
+  position: 0.857813 -0.5 36.9797
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 9999999996
+  filename: tube2_det23.dat
+  statistics: X0=-0.1397; dX=0; Y0=0.031757; dY=0.00501652;
+  signal: Min=0; Max=5.84718; Mean=0.207387;
+  values: 414.773 10.1235 11222
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2794 0.2794 0.02 0.045
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 21:08:20 2026 (1791745700)
+  type: array_2d(2, 1000)
+  Source: full_instrument (full_instrument.instr)
+  component: tube2_det24
+  position: 0.854306 -0.5 36.9199
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 9999999996
+  filename: tube2_det24.dat
+  statistics: X0=-0.1397; dX=5.8902e-09; Y0=0.0318369; dY=0.00497818;
+  signal: Min=0; Max=5.59933; Mean=0.203472;
+  values: 406.944 10.1121 11162
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2794 0.2794 0.02 0.045
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 21:08:20 2026 (1791745700)
+  type: array_2d(2, 1000)
+  Source: full_instrument (full_instrument.instr)
+  component: tube2_det25
+  position: 0.846636 -0.5 36.8605
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 9999999996
+  filename: tube2_det25.dat
+  statistics: X0=-0.1397; dX=4.56253e-09; Y0=0.0320627; dY=0.00497441;
+  signal: Min=0; Max=4.46434; Mean=0.202698;
+  values: 405.397 10.0221 11053
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2794 0.2794 0.02 0.045
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 21:08:20 2026 (1791745700)
+  type: array_2d(2, 1000)
+  Source: full_instrument (full_instrument.instr)
+  component: tube2_det26
+  position: 0.834842 -0.5 36.8018
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 9999999996
+  filename: tube2_det26.dat
+  statistics: X0=-0.1397; dX=0; Y0=0.03232; dY=0.00485862;
+  signal: Min=0; Max=4.47349; Mean=0.195936;
+  values: 391.873 9.84829 10990
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2794 0.2794 0.02 0.045
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 21:08:20 2026 (1791745700)
+  type: array_2d(2, 1000)
+  Source: full_instrument (full_instrument.instr)
+  component: tube2_det27
+  position: 0.818981 -0.5 36.744
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 9999999996
+  filename: tube2_det27.dat
+  statistics: X0=-0.1397; dX=6.71586e-09; Y0=0.0328986; dY=0.00479245;
+  signal: Min=0; Max=4.21836; Mean=0.195048;
+  values: 390.095 9.8275 11106
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2794 0.2794 0.02 0.045
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 21:08:20 2026 (1791745700)
+  type: array_2d(2, 1000)
+  Source: full_instrument (full_instrument.instr)
+  component: tube2_det28
+  position: 0.799129 -0.5 36.6875
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 9999999996
+  filename: tube2_det28.dat
+  statistics: X0=-0.1397; dX=0; Y0=0.0330726; dY=0.00493534;
+  signal: Min=0; Max=3.96002; Mean=0.200069;
+  values: 400.137 10.0271 11056
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2794 0.2794 0.02 0.045
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 21:08:20 2026 (1791745700)
+  type: array_2d(2, 1000)
+  Source: full_instrument (full_instrument.instr)
+  component: tube2_det29
+  position: 0.775385 -0.5 36.6325
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 9999999996
+  filename: tube2_det29.dat
+  statistics: X0=-0.1397; dX=1.86265e-09; Y0=0.0336758; dY=0.00473756;
+  signal: Min=0; Max=3.92785; Mean=0.192539;
+  values: 385.077 9.73978 10945
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2794 0.2794 0.02 0.045
+  variables: I I_err N
+end data

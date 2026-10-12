@@ -1,0 +1,194 @@
+/********************************************************************************
+* 
+* McStas, neutron ray-tracing package
+*         Copyright (C) 1997-2008, All rights reserved
+*         Risoe National Laboratory, Roskilde, Denmark
+*         Institut Laue Langevin, Grenoble, France
+* 
+* This file was written by McStasScript, which is a 
+* python based McStas instrument generator written by 
+* Mads Bertelsen in 2019 while employed at the 
+* European Spallation Source Data Management and 
+* Software Centre
+* 
+* Instrument: PSCandBC
+* 
+* %Identification
+* Written by: McStasScript example
+* Date: 12:50:58 on October 11, 2026
+* Origin: Teaching example
+* %INSTRUMENT_SITE: Generated_instruments
+* 
+* !!Please write a short instrument description (1 line) here!!
+* 
+* %Description
+* Please write a longer instrument description here!
+* 
+* 
+* %Parameters
+* pulse_length: [unit] Proton pulse duration for the moderator model [s]
+* moderator_tau: [unit] Cold moderator decay time used by Source_pulsed [s]
+* moderator_n: [unit] Cold moderator pulse-shape parameter used by Source_pulsed
+* source_frequency: [unit] Source repetition rate [Hz]
+* lambda_min: [unit] Minimum source wavelength [Angstrom]
+* lambda_max: [unit] Maximum source wavelength [Angstrom]
+* l1: [unit] Length of first guide segment [m]
+* psc_order: [unit] PSC frequency = psc_order times source frequency
+* opening_PSC: [unit] PSC slit angular opening [degrees]
+* chopper_distance: [unit] Source-to-PSC distance [m]
+* psc_lambda_min: [unit] Lower wavelength edge to center on with the PSC [Angstrom]
+* psc_lambda_max: [unit] Upper wavelength edge to center on with the PSC [Angstrom]
+* lambda_band_min: [unit] Lower edge of selected BC wavelength band [Angstrom]
+* lambda_band_max: [unit] Upper edge of selected BC wavelength band [Angstrom]
+* guide2_length: [unit] Length of guide section between PSC and BC [m]
+* 
+* %Link 
+* 
+* %End 
+********************************************************************************/
+
+DEFINE INSTRUMENT PSCandBC (
+pulse_length = 0.0004, // Proton pulse duration for the moderator model [s]
+moderator_tau = 0.00017, // Cold moderator decay time used by Source_pulsed [s]
+moderator_n = 5.0, // Cold moderator pulse-shape parameter used by Source_pulsed
+source_frequency = 50.0, // Source repetition rate [Hz]
+lambda_min = 0.5, // Minimum source wavelength [Angstrom]
+lambda_max = 10.0, // Maximum source wavelength [Angstrom]
+l1 = 2.0, // Length of first guide segment [m]
+psc_order = 1, // PSC frequency = psc_order times source frequency
+opening_PSC = 36.0, // PSC slit angular opening [degrees]
+chopper_distance = 2.12, // Source-to-PSC distance [m]
+psc_lambda_min = 1.0, // Lower wavelength edge to center on with the PSC [Angstrom]
+psc_lambda_max = 7.0, // Upper wavelength edge to center on with the PSC [Angstrom]
+lambda_band_min = 2.0, // Lower edge of selected BC wavelength band [Angstrom]
+lambda_band_max = 4.0, // Upper edge of selected BC wavelength band [Angstrom]
+guide2_length = 10.0 // Length of guide section between PSC and BC [m]
+)
+
+DECLARE 
+%{
+double nu_PSC;
+double PSC_order;
+double actual_width_PSC;
+double psc_source_center;
+double psc_phase_lambda;
+double psc_phase_time;
+double psc_phase_deg;
+double psc_t_start;
+double psc_t_end;
+double psc_target_width;
+double psc_band_min;
+double psc_band_max;
+double psc_max_order;
+double L_PSC_BC;
+double gate_width_BC;
+double opening_BC;
+double nu_BC;
+double lambda_bandwidth;
+double lambda_band_center;
+double bc_target_width;
+double bc_max_order;
+double bc_phase_time;
+double bc_phase_deg;
+%}
+
+INITIALIZE 
+%{
+// Start of initialize for generated PSCandBC
+if (moderator_tau <= 0 || moderator_n <= 1 || source_frequency <= 0 || psc_order < 1 || fabs(psc_order-floor(psc_order+0.5)) > 1e-6 || opening_PSC <= 0 || opening_PSC >= 360 || psc_lambda_min < lambda_min || psc_lambda_max > lambda_max || psc_lambda_min <= 0 || psc_lambda_max <= psc_lambda_min) { fprintf(stderr, "PSC band must be within the source range; order, source frequency and slit opening must be valid\n"); exit(1); }
+psc_band_min = psc_lambda_min;
+psc_band_max = psc_lambda_max;
+psc_phase_lambda = (psc_band_min + psc_band_max)/2.0;
+PSC_order = psc_order;
+nu_PSC = PSC_order*source_frequency;
+actual_width_PSC = opening_PSC/(360.0*nu_PSC);
+psc_source_center = 0.5*pulse_length + moderator_tau*(moderator_n+1.0)/moderator_n;
+psc_t_start = psc_source_center + chopper_distance*psc_band_min/3956.0346;
+psc_t_end = psc_source_center + chopper_distance*psc_band_max/3956.0346;
+psc_target_width = pulse_length + chopper_distance*(psc_band_max-psc_band_min)/3956.0346;
+psc_max_order = floor(opening_PSC/(360.0*source_frequency*psc_target_width));
+if (actual_width_PSC + 1e-12 < psc_target_width) { printf("WARNING: PSC gate is narrower than the nominal source-pulse plus target-band arrival span; band edges will be clipped\n"); }
+psc_phase_time = 0.5*(psc_t_start + psc_t_end);
+psc_phase_deg = fmod(360.0*nu_PSC*psc_phase_time, 360.0);
+printf("PSC order=%g, rate=%g Hz (%g rpm), gate=%g us, nominal gate requirement=%g us, largest nominal order=%g; source center=%g ms; phase=%g deg at t=%g ms\n", PSC_order, nu_PSC, 60.0*nu_PSC, actual_width_PSC*1e6, psc_target_width*1e6, psc_max_order, 1e3*psc_source_center, psc_phase_deg, 1e3*psc_phase_time);
+if (chopper_distance < 0.1 + l1 + 0.02) { printf("PSC is too close to guide 1; increase chopper_distance or reduce l1\n"); exit(1); }
+if (lambda_band_min < lambda_min || lambda_band_max > lambda_max || lambda_band_min <= 0 || lambda_band_max <= lambda_band_min) { fprintf(stderr, "Requested BC band must lie within source wavelength limits\n"); exit(1); }
+lambda_bandwidth = lambda_band_max - lambda_band_min;
+lambda_band_center = (lambda_band_min + lambda_band_max)/2.0;
+L_PSC_BC = guide2_length + 0.04;
+opening_BC = 120.0;
+bc_target_width = pulse_length + (chopper_distance+L_PSC_BC)*lambda_bandwidth/3956.0346;
+bc_max_order = floor(opening_BC/(360.0*source_frequency*bc_target_width));
+if (bc_max_order < 1) { fprintf(stderr, "Selected wavelength band is too broad for a source-synchronized BC with a 120 degree opening\n"); exit(1); }
+nu_BC = bc_max_order*source_frequency;
+gate_width_BC = opening_BC/(360.0*nu_BC);
+bc_phase_time = psc_source_center + (chopper_distance+L_PSC_BC)*lambda_band_center/3956.0346;
+bc_phase_deg = fmod(360.0*nu_BC*bc_phase_time, 360.0);
+printf("BC fixed opening=%g deg; selected band=%g-%g A; required window=%g us; harmonic=%g; rate=%g Hz; actual gate=%g us; phase=%g deg at t=%g ms\n", opening_BC, lambda_band_min, lambda_band_max, bc_target_width*1e6, bc_max_order, nu_BC, gate_width_BC*1e6, bc_phase_deg, 1e3*bc_phase_time);
+if (opening_BC >= 360.0) { fprintf(stderr, "BC opening must be less than 360 degrees\n"); exit(1); }
+%}
+
+TRACE 
+COMPONENT source = Source_pulsed(
+ xwidth = 0.042, yheight = 0.03,
+ Lmin = lambda_min, Lmax = lambda_max,
+ t_min = 0.0, t_max = 0.004,
+ dist = 0.1, focus_xw = 0.04,
+ focus_yh = 0.04, freq = source_frequency,
+ t_pulse = pulse_length, T1 = 60.0,
+ I1 = 1.75e12/source_frequency, tau1 = moderator_tau,
+ n_mod = moderator_n, I_um = 3.82e10/source_frequency,
+ tau_um = 1.2e-05, n_um = 5.0,
+ chi_um = 0.9, kap_um = 2.2)
+AT (0, 0, 0) ABSOLUTE
+
+COMPONENT guide = Guide(
+ w1 = 0.04, h1 = 0.04,
+ w2 = 0.04, h2 = 0.04,
+ l = l1, m = 4.0)
+AT (0, 0, 0.1) RELATIVE source
+
+COMPONENT PSC = DiskChopper(
+ theta_0 = opening_PSC, radius = 0.25,
+ yheight = 0.065, nu = nu_PSC,
+ nslit = 1, abs_out = 1,
+ phase = psc_phase_deg, verbose = 1)
+AT (0, 0, chopper_distance) RELATIVE source
+
+COMPONENT guide2 = Guide(
+ w1 = 0.04, h1 = 0.04,
+ w2 = 0.04, h2 = 0.04,
+ l = guide2_length, m = 4.0)
+AT (0, 0, 0.02) RELATIVE PSC
+
+COMPONENT lambda_before_BC = L_monitor(
+ nL = 100, xwidth = 0.04,
+ yheight = 0.04, Lmin = 0.5,
+ Lmax = 10.0, restore_neutron = 1)
+AT (0, 0, guide2_length+0.005) RELATIVE guide2
+
+COMPONENT tof_before_BC = TOF_monitor(
+ nt = 1000, xwidth = 0.04,
+ yheight = 0.04, tmin = 0.0,
+ tmax = 25000.0, restore_neutron = 1)
+AT (0, 0, guide2_length+0.005) RELATIVE guide2
+
+COMPONENT BC = DiskChopper(
+ theta_0 = opening_BC, radius = 0.25,
+ yheight = 0.065, nu = nu_BC,
+ nslit = 1, abs_out = 1,
+ phase = bc_phase_deg, verbose = 1)
+AT (0, 0, L_PSC_BC) RELATIVE PSC
+
+COMPONENT lambda_after_BC = L_monitor(
+ nL = 100, xwidth = 0.04,
+ yheight = 0.04, Lmin = 0.5,
+ Lmax = 10.0, restore_neutron = 1)
+AT (0, 0, 0.005) RELATIVE BC
+
+FINALLY 
+%{
+// Start of finally for generated PSCandBC
+%}
+
+END

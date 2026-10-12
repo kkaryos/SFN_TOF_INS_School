@@ -1,0 +1,275 @@
+/********************************************************************************
+* 
+* McStas, neutron ray-tracing package
+*         Copyright (C) 1997-2008, All rights reserved
+*         Risoe National Laboratory, Roskilde, Denmark
+*         Institut Laue Langevin, Grenoble, France
+* 
+* This file was written by McStasScript, which is a 
+* python based McStas instrument generator written by 
+* Mads Bertelsen in 2019 while employed at the 
+* European Spallation Source Data Management and 
+* Software Centre
+* 
+* Instrument: one_channel_instrument
+* 
+* %Identification
+* Written by: McStasScript example
+* Date: 13:00:14 on October 11, 2026
+* Origin: Teaching example
+* %INSTRUMENT_SITE: Generated_instruments
+* 
+* !!Please write a short instrument description (1 line) here!!
+* 
+* %Description
+* Please write a longer instrument description here!
+* 
+* 
+* %Parameters
+* pulse_length: [unit] Proton pulse duration for the moderator model [s]
+* moderator_tau: [unit] Cold moderator decay time used by Source_pulsed [s]
+* moderator_n: [unit] Cold moderator pulse-shape parameter used by Source_pulsed
+* source_frequency: [unit] Source repetition rate [Hz]
+* lambda_min: [unit] Minimum source wavelength [Angstrom]
+* lambda_max: [unit] Maximum source wavelength [Angstrom]
+* source_t_max: [unit] End of Source_pulsed emission-time sampling window [s]
+* linx: [unit] Horizontal upstream focal distance [m]
+* liny: [unit] Vertical upstream focal distance [m]
+* loutx: [unit] Horizontal downstream focal distance [m]
+* louty: [unit] Vertical downstream focal distance [m]
+* guide_length: [unit] Length of the uninterrupted elliptic guide [m]
+* guide_xwidth: [unit] Horizontal guide dimension at mid-length [m]
+* guide_yheight: [unit] Vertical guide dimension at mid-length [m]
+* d_source_guide: [unit] Source-to-guide entrance distance [m]
+* d_guide_sample: [unit] Guide exit-to-sample distance [m]
+* lambda_f: [unit] Analyser-selected wavelength [Angstrom]
+* channel_angle: [unit] Sample-to-analyser direction [degrees]
+* d_sample_analyser: [unit] Sample-to-analyser distance [m]
+* analyser_d: [unit] Analyser lattice spacing [Angstrom]
+* analyser_width: [unit] Total analyser width [m]
+* analyser_height: [unit] Total analyser height [m]
+* analyser_mosaic_h: [unit] Horizontal mosaic [arcmin]
+* analyser_mosaic_v: [unit] Vertical mosaic [arcmin]
+* analyser_NH: [unit] Horizontal blade count
+* analyser_NV: [unit] Vertical blade count
+* analyser_gap: [unit] Blade gap [m]
+* analyser_detector_distance: [unit] FANTASTIC L2: separation along fixed detector arm [m]
+* detector_x: [unit] Combined tube width [m]
+* detector_y: [unit] Tube height [m]
+* sample_radius: [unit] Sample radius [m]
+* sample_height: [unit] Sample height [m]
+* sample_rotation_x: [unit] Sample x rotation [degrees]
+* sample_rotation_y: [unit] Sample y rotation [degrees]
+* sample_rotation_z: [unit] Sample z rotation [degrees]
+* sample_f_QE: [unit] Quasielastic fraction
+* sample_f_tun: [unit] Tunneling fraction; elastic fraction is the remainder
+* sample_gamma: [unit] Quasielastic Lorentzian HWHM [meV]
+* sample_E_tun: [unit] Tunneling energy [meV]
+* 
+* %Link 
+* 
+* %End 
+********************************************************************************/
+
+DEFINE INSTRUMENT one_channel_instrument (
+pulse_length = 0.0004, // Proton pulse duration for the moderator model [s]
+moderator_tau = 0.00017, // Cold moderator decay time used by Source_pulsed [s]
+moderator_n = 5.0, // Cold moderator pulse-shape parameter used by Source_pulsed
+source_frequency = 50.0, // Source repetition rate [Hz]
+lambda_min = 2.0, // Minimum source wavelength [Angstrom]
+lambda_max = 4.0, // Maximum source wavelength [Angstrom]
+double source_t_max = 0.004, // End of Source_pulsed emission-time sampling window [s]
+double linx = 0.611423, // Horizontal upstream focal distance [m]
+double liny = 1.04627, // Vertical upstream focal distance [m]
+double loutx = 1.68246, // Horizontal downstream focal distance [m]
+double louty = 1.94531, // Vertical downstream focal distance [m]
+double guide_length = 35.0, // Length of the uninterrupted elliptic guide [m]
+double guide_xwidth = 0.12, // Horizontal guide dimension at mid-length [m]
+double guide_yheight = 0.12, // Vertical guide dimension at mid-length [m]
+double d_source_guide = 0.5, // Source-to-guide entrance distance [m]
+double d_guide_sample = 1.5, // Guide exit-to-sample distance [m]
+double lambda_f = 4.2, // Analyser-selected wavelength [Angstrom]
+double channel_angle = 30.0, // Sample-to-analyser direction [degrees]
+double d_sample_analyser = 0.8, // Sample-to-analyser distance [m]
+double analyser_d = 3.357, // Analyser lattice spacing [Angstrom]
+double analyser_width = 0.07, // Total analyser width [m]
+double analyser_height = 0.03, // Total analyser height [m]
+double analyser_mosaic_h = 30.0, // Horizontal mosaic [arcmin]
+double analyser_mosaic_v = 30.0, // Vertical mosaic [arcmin]
+int analyser_NH = 1, // Horizontal blade count
+int analyser_NV = 1, // Vertical blade count
+double analyser_gap = 0, // Blade gap [m]
+double analyser_detector_distance = 0.5, // FANTASTIC L2: separation along fixed detector arm [m]
+double detector_x = 0.03, // Combined tube width [m]
+double detector_y = 0.5, // Tube height [m]
+double sample_radius = 0.01, // Sample radius [m]
+double sample_height = 0.02, // Sample height [m]
+double sample_rotation_x = 0.0, // Sample x rotation [degrees]
+double sample_rotation_y = 0.0, // Sample y rotation [degrees]
+double sample_rotation_z = 0.0, // Sample z rotation [degrees]
+double sample_f_QE = 0, // Quasielastic fraction
+double sample_f_tun = 0, // Tunneling fraction; elastic fraction is the remainder
+double sample_gamma = 0, // Quasielastic Lorentzian HWHM [meV]
+double sample_E_tun = 5 // Tunneling energy [meV]
+)
+
+DECLARE 
+%{
+double A5;
+double analyser_RH;
+double analyser_RV;
+double L_primary_channel;
+double tube_tmax;
+char tube_options[1024];
+double detector_deflection;
+double detector_ray_path;
+double tube_center_y;
+double detector_hit_x;
+double detector_hit_y;
+double detector_hit_z;
+double sample_target_x;
+double sample_target_y;
+double sample_target_z;
+double sample_focus_xw;
+double sample_focus_yh;
+double sample_focus_scale;
+double offset;
+%}
+
+INITIALIZE 
+%{
+// Start of initialize for generated one_channel_instrument
+if (lambda_min <= 0 || lambda_max <= lambda_min || source_frequency <= 0 || pulse_length <= 0 || moderator_tau <= 0 || moderator_n <= 1 || source_t_max <= 0) { fprintf(stderr, "Invalid source parameters\n"); exit(1); }
+if (guide_length <= 0 || guide_xwidth <= 0 || guide_yheight <= 0 || d_source_guide <= 0 || d_guide_sample < 0 || linx <= 0 || liny <= 0 || loutx <= 0 || louty <= 0) { fprintf(stderr, "Invalid elliptic-guide geometry\n"); exit(1); }
+if (lambda_f <= 0 || analyser_d <= 0 || lambda_f >= 2*analyser_d || d_sample_analyser <= 0 || analyser_detector_distance <= 0 || analyser_width <= 0 || analyser_height <= 0 || analyser_NH < 1 || analyser_NV < 1 || analyser_gap < 0 || analyser_mosaic_h <= 0 || analyser_mosaic_v <= 0 || detector_x <= 0 || detector_y <= 0 || sample_radius <= 0 || sample_height <= 0) { fprintf(stderr, "Invalid secondary-channel parameters\n"); exit(1); }
+A5 = asin(lambda_f/(2.0*analyser_d))*180.0/PI;
+detector_deflection = 2.0*A5;
+if (sin(DEG2RAD*detector_deflection) <= 1e-8) { fprintf(stderr, "Detector intersection is undefined at this Bragg angle\n"); exit(1); }
+detector_ray_path = analyser_detector_distance/sin(DEG2RAD*detector_deflection);
+tube_center_y = -analyser_detector_distance/tan(DEG2RAD*detector_deflection);
+detector_hit_x = (d_sample_analyser - tube_center_y)*sin(DEG2RAD*channel_angle);
+detector_hit_y = -analyser_detector_distance;
+detector_hit_z = (d_sample_analyser - tube_center_y)*cos(DEG2RAD*channel_angle);
+printf("FANTASTIC fixed -90 deg detector arm: 2A5=%g deg; ray path=%g m; predicted ray local y=%g m (diagnostic only); ray intersection relative to sample=(%g,%g,%g) m\n", detector_deflection, detector_ray_path, tube_center_y, detector_hit_x, detector_hit_y, detector_hit_z);
+analyser_RH = 0;
+analyser_RV = 0;
+L_primary_channel = d_source_guide + guide_length + d_guide_sample;
+tube_tmax = fmax(1.0/source_frequency, source_t_max + L_primary_channel*lambda_max/3956.0346 + (d_sample_analyser + detector_ray_path)*lambda_f/3956.0346);
+snprintf(tube_options, sizeof(tube_options), "cylinder, y, bins=20, t, limits=[0 %g], bins=1000", tube_tmax);
+printf("One analyser: lambda_f=%g A, A5=%g deg, RH=%g m, RV=%g m, detector tmax=%g ms\n", lambda_f, A5, analyser_RH, analyser_RV, 1e3*tube_tmax);
+if (sample_f_QE < 0 || sample_f_tun < 0 || sample_f_QE + sample_f_tun > 1 || sample_gamma < 0 || (sample_f_QE > 0 && sample_gamma <= 0) || sample_E_tun < 0) { fprintf(stderr, "Invalid tunneling fractions, width, or energy\n"); exit(1); }
+if (sample_f_QE == 0 && sample_f_tun == 0 && (lambda_f < lambda_min || lambda_f > lambda_max)) { printf("NOTE: Elastic sample with lambda_f=%g A outside source range [%g,%g] A; choose lambda_f inside the source range for elastic signal\n", lambda_f, lambda_min, lambda_max); }
+
+{
+    Rotation sample_focus_rotation;
+    Coords analyser_center;
+    rot_set_rotation(sample_focus_rotation,
+        DEG2RAD*sample_rotation_x, DEG2RAD*sample_rotation_y,
+        DEG2RAD*sample_rotation_z);
+    analyser_center = coords_set(
+        d_sample_analyser*sin(DEG2RAD*channel_angle), 0,
+        d_sample_analyser*cos(DEG2RAD*channel_angle));
+    coords_get(rot_apply(sample_focus_rotation, analyser_center),
+        &sample_target_x, &sample_target_y, &sample_target_z);
+}
+
+if (d_sample_analyser <= 0.5*analyser_width*cos(DEG2RAD*A5)) { fprintf(stderr, "Analyser is too wide or too close for the focus rectangle\n"); exit(1); }
+sample_focus_scale = d_sample_analyser/(d_sample_analyser - 0.5*analyser_width*cos(DEG2RAD*A5));
+sample_focus_xw = analyser_height*sample_focus_scale;
+sample_focus_yh = analyser_width*sin(DEG2RAD*A5)*sample_focus_scale;
+printf("Sample target=(%g,%g,%g) m in sample frame; rectangular focus=%g x %g m\n", sample_target_x, sample_target_y, sample_target_z, sample_focus_xw, sample_focus_yh);
+offset = channel_angle;
+%}
+
+TRACE 
+COMPONENT source = Source_pulsed(
+ xwidth = 0.042, yheight = 0.03,
+ Lmin = lambda_min, Lmax = lambda_max,
+ t_min = 0.0, t_max = source_t_max,
+ dist = d_source_guide, focus_xw = 0.04,
+ focus_yh = 0.04, freq = source_frequency,
+ t_pulse = pulse_length, T1 = 60.0,
+ I1 = 1.75e12/source_frequency, tau1 = moderator_tau,
+ n_mod = moderator_n, I_um = 3.82e10/source_frequency,
+ tau_um = 1.2e-05, n_um = 5.0,
+ chi_um = 0.9, kap_um = 2.2)
+AT (0, 0, 0) ABSOLUTE
+
+COMPONENT guide = Elliptic_guide_gravity(
+ xwidth = guide_xwidth, yheight = guide_yheight,
+ l = guide_length, linxw = linx,
+ loutxw = loutx, linyh = liny,
+ loutyh = louty, dimensionsAt = "mid",
+ option = "ellipse", R0 = 0.99,
+ Qc = 0.0218, alpha = 6.07,
+ m = 4, W = 0.003)
+AT (0, 0, d_source_guide) RELATIVE source
+
+COMPONENT guide_out = Arm()
+AT (0, 0, guide_length) RELATIVE guide
+
+COMPONENT sample_position = Arm()
+AT (0, 0, d_guide_sample) RELATIVE guide_out
+
+COMPONENT sample_tunneling = Tunneling_sample(
+ radius = sample_radius, p_interact = 1.0,
+ f_QE = sample_f_QE, f_tun = sample_f_tun,
+ gamma = sample_gamma, E_tun = sample_E_tun,
+ target_x = sample_target_x, target_y = sample_target_y,
+ target_z = sample_target_z, focus_xw = sample_focus_xw,
+ focus_yh = sample_focus_yh, yheight = sample_height)
+AT (0, 0, 0) RELATIVE sample_position
+ROTATED (sample_rotation_x, sample_rotation_y, sample_rotation_z) RELATIVE sample_position
+EXTEND %{
+if (!SCATTERED) { ABSORB; }
+%}
+
+COMPONENT ana_arm0 = Arm()
+AT (d_sample_analyser*sin(DEG2RAD*channel_angle), 0, d_sample_analyser*cos(DEG2RAD*channel_angle)) RELATIVE sample_position
+ROTATED (0, channel_angle, 90) RELATIVE sample_position
+
+COMPONENT monochromator0 = Monochromator_curved(
+ gap = analyser_gap, NH = analyser_NH,
+ NV = analyser_NV, mosaich = analyser_mosaic_h,
+ mosaicv = analyser_mosaic_v, r0 = 0.99,
+ t0 = 1.0, RV = analyser_RV,
+ RH = analyser_RH, DM = analyser_d,
+ width = analyser_width, height = analyser_height,
+ order = 1)
+AT (0, 0, 0) RELATIVE ana_arm0
+ROTATED (0, -A5, 0) RELATIVE ana_arm0
+
+COMPONENT det_arm0 = Arm()
+AT (0, 0, 0) RELATIVE ana_arm0
+ROTATED (0, -90, 0) RELATIVE ana_arm0
+
+COMPONENT det_pos0 = Arm()
+AT (0, 0, analyser_detector_distance/2.0) RELATIVE det_arm0
+ROTATED (0, 0, 90) RELATIVE det_arm0
+
+COMPONENT collim0 = Slit(
+ xwidth = detector_x/2.0, yheight = detector_y/2.0)
+AT (0, 0, 0) RELATIVE det_pos0
+
+COMPONENT tube1_det0 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube1_det0.dat")
+AT (-detector_x/4.0 - 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos0
+ROTATED (0, 0, 0) RELATIVE det_pos0
+GROUP Detectors
+
+COMPONENT tube2_det0 = Monitor_nD(
+ xwidth = detector_x/2.0, yheight = detector_y,
+ restore_neutron = 1, options = tube_options,
+ filename = "tube2_det0.dat")
+AT (detector_x/4.0 + 0.0001, 0, analyser_detector_distance/2.0) RELATIVE det_pos0
+ROTATED (0, 0, 0) RELATIVE det_pos0
+GROUP Detectors
+
+FINALLY 
+%{
+// Start of finally for generated one_channel_instrument
+%}
+
+END

@@ -1,0 +1,108 @@
+mcstas simulation description file for one_channel_instrument.
+Date:    Sun Oct 11 13:00:29 2026
+Program:  3.9.2, git
+
+begin instrument: one_channel_instrument
+  File: /run/media/kyriakos2013/Crucial_X9/SCHOOL/solutions/one_channel/one_channel_instrument/mccode
+  Source: one_channel_instrument.instr
+  Parameters:  pulse_length(double) moderator_tau(double) moderator_n(double) source_frequency(double) lambda_min(double) lambda_max(double) source_t_max(double) linx(double) liny(double) loutx(double) louty(double) guide_length(double) guide_xwidth(double) guide_yheight(double) d_source_guide(double) d_guide_sample(double) lambda_f(double) channel_angle(double) d_sample_analyser(double) analyser_d(double) analyser_width(double) analyser_height(double) analyser_mosaic_h(double) analyser_mosaic_v(double) analyser_NH(int) analyser_NV(int) analyser_gap(double) analyser_detector_distance(double) detector_x(double) detector_y(double) sample_radius(double) sample_height(double) sample_rotation_x(double) sample_rotation_y(double) sample_rotation_z(double) sample_f_QE(double) sample_f_tun(double) sample_gamma(double) sample_E_tun(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: /run/media/kyriakos2013/Crucial_X9/SCHOOL/solutions/one_channel/one_channel_instrument
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator:  3.9.2, git
+  Instrument: one_channel_instrument.instr
+  Ncount: 100000000
+  Trace: no
+  Gravitation: no
+  Seed: 1791716429346969
+  Directory: /run/media/kyriakos2013/Crucial_X9/SCHOOL/solutions/one_channel/one_channel_instrument
+  Nodes: 12
+  Param: pulse_length=0.0004
+  Param: moderator_tau=0.00017
+  Param: moderator_n=5
+  Param: source_frequency=50
+  Param: lambda_min=2
+  Param: lambda_max=4
+  Param: source_t_max=0.004
+  Param: linx=0.611423
+  Param: liny=1.04627
+  Param: loutx=1.68246
+  Param: louty=1.94531
+  Param: guide_length=35
+  Param: guide_xwidth=0.12
+  Param: guide_yheight=0.12
+  Param: d_source_guide=0.5
+  Param: d_guide_sample=1.5
+  Param: lambda_f=4.2
+  Param: channel_angle=30
+  Param: d_sample_analyser=0.8
+  Param: analyser_d=3.357
+  Param: analyser_width=0.07
+  Param: analyser_height=0.03
+  Param: analyser_mosaic_h=30
+  Param: analyser_mosaic_v=30
+  Param: analyser_NH=1
+  Param: analyser_NV=1
+  Param: analyser_gap=0
+  Param: analyser_detector_distance=0.5
+  Param: detector_x=0.03
+  Param: detector_y=0.5
+  Param: sample_radius=0.01
+  Param: sample_height=0.02
+  Param: sample_rotation_x=0
+  Param: sample_rotation_y=0
+  Param: sample_rotation_z=0
+  Param: sample_f_QE=0
+  Param: sample_f_tun=0
+  Param: sample_gamma=0
+  Param: sample_E_tun=5
+end simulation
+
+begin data
+  Date: Sun Oct 11 13:01:27 2026 (1791716487)
+  type: array_2d(20, 1000)
+  Source: one_channel_instrument (one_channel_instrument.instr)
+  component: tube1_det0
+  position: 0.406582 -0.5 37.689
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 99999996
+  filename: tube1_det0.dat
+  statistics: X0=-0.1625; dX=4.56253e-09; Y0=0.0390537; dY=0.000237188;
+  signal: Min=0; Max=0.17098; Mean=2.34499e-05;
+  values: 0.468997 0.161745 75
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.25 0.25 0 0.0428044
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sun Oct 11 13:01:27 2026 (1791716487)
+  type: array_2d(20, 1000)
+  Source: one_channel_instrument (one_channel_instrument.instr)
+  component: tube2_det0
+  position: 0.393418 -0.5 37.6966
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 99999996
+  filename: tube2_det0.dat
+  statistics: X0=-0.1625; dX=0; Y0=0.0390134; dY=0.000190838;
+  signal: Min=0; Max=0.217539; Mean=6.20768e-05;
+  values: 1.24154 0.290965 83
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.25 0.25 0 0.0428044
+  variables: I I_err N
+end data
