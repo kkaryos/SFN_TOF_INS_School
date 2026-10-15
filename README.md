@@ -36,4 +36,3 @@ In the JupyterLab file browser, open `SFN_TOF_INS_School` and double-click:
 
 Select **Python (mcstas)** in the notebook's kernel menu (top right). Run cells with **Shift + Enter**.
 
-You can also open `reduce_powder.ipynb` for the data-reduction exercises.
