@@ -36,3 +36,4 @@ In the JupyterLab file browser, open `SFN_TOF_INS_School` and double-click:
 
 Select **Python (mcstas)** in the notebook's kernel menu (top right). Run cells with **Shift + Enter**.
 
+**depending of the number of cores of your VISA instance change mpi=CORES , when running the simulations 
