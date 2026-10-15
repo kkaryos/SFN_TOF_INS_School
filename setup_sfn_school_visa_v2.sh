@@ -1,23 +1,25 @@
+
 #!/usr/bin/env bash
-# Simple VISA / JupyterLab setup for SFN_TOF_INS_School
 set -e
+
+# Initialize Conda
 source /opt/conda/etc/profile.d/conda.sh
 
-# To rebuild an older environment: CLEAN=1 bash setup_mcstas_visa.sh
-if [[ "${CLEAN:-0}" == 1 ]] && conda env list | awk '{print $1}' | grep -qx mcstas; then
-  conda env remove -n mcstas -y
+# Create environment if needed
+if ! conda env list | grep -Eq '^[[:space:]]*mcstas[[:space:]]'; then
+    conda create -y -n mcstas python=3.12
 fi
 
-packages=(python=3.12 pip mcstas mcstasscript scipp scippneutron plopp pyarrow numpy scipy pandas matplotlib h5py hdf5plugin xarray ipykernel ipywidgets ipympl jupyterlab tqdm pyyaml)
-if conda env list | awk '{print $1}' | grep -qx mcstas; then
-  conda install -n mcstas --override-channels -c conda-forge --solver=libmamba -y "${packages[@]}"
-else
-  conda create -n mcstas --override-channels -c conda-forge --solver=libmamba -y "${packages[@]}"
-fi
-conda run -n mcstas python -m pip install mpld3
-conda run -n mcstas python -m ipykernel install --user --name mcstas --display-name 'Python (mcstas)'
-echo '--- Installation checks ---'
-conda run -n mcstas mcrun --version
-conda run -n mcstas python -c 'import mcstasscript, scipp, plopp, pyarrow, mpld3; print("Python packages OK")'
-conda run -n mcstas python -m jupyter kernelspec list
-echo 'Done. Refresh VISA JupyterLab and choose Python (mcstas).'
+# Install McStas and school packages
+conda install -y -n mcstas conda-forge::mcstas
+conda install -y -n mcstas -c conda-forge \
+    ipykernel ipywidgets jupyterlab \
+    scipp plopp mpld3 pyarrow \
+    numpy scipy matplotlib pandas h5py
+
+# Register Jupyter kernel
+conda run -n mcstas python -m ipykernel install \
+    --user --name mcstas --display-name "mcstas"
+
+echo "McStas environment ready!"
+echo "Select the 'mcstas' kernel in JupyterLab."
