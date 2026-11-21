@@ -1,0 +1,108 @@
+mcstas simulation description file for one_channel_instrument.
+Date:    Fri Nov 20 17:21:44 2026
+Program:  3.10.2, git
+
+begin instrument: one_channel_instrument
+  File: /home/kyriakos-karyos/Documents/SFN_TOF_INS_School/solutions/one_channel/one_channel_instrument_2/mccode
+  Source: one_channel_instrument.instr
+  Parameters:  pulse_length(double) moderator_tau(double) moderator_n(double) source_frequency(double) lambda_min(double) lambda_max(double) source_t_max(double) linx(double) liny(double) loutx(double) louty(double) guide_length(double) guide_xwidth(double) guide_yheight(double) d_source_guide(double) d_guide_sample(double) lambda_f(double) channel_angle(double) d_sample_analyser(double) analyser_d(double) analyser_width(double) analyser_height(double) analyser_mosaic_h(double) analyser_mosaic_v(double) analyser_NH(int) analyser_NV(int) analyser_gap(double) analyser_detector_distance(double) detector_x(double) detector_y(double) sample_radius(double) sample_height(double) sample_rotation_x(double) sample_rotation_y(double) sample_rotation_z(double) sample_f_QE(double) sample_f_tun(double) sample_gamma(double) sample_E_tun(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: /home/kyriakos-karyos/Documents/SFN_TOF_INS_School/solutions/one_channel/one_channel_instrument_2
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator:  3.10.2, git
+  Instrument: one_channel_instrument.instr
+  Ncount: 100000000
+  Trace: no
+  Gravitation: no
+  Seed: 1795191704810591
+  Directory: /home/kyriakos-karyos/Documents/SFN_TOF_INS_School/solutions/one_channel/one_channel_instrument_2
+  Nodes: 10
+  Param: pulse_length=0.0004
+  Param: moderator_tau=0.00017
+  Param: moderator_n=5
+  Param: source_frequency=50
+  Param: lambda_min=2
+  Param: lambda_max=4
+  Param: source_t_max=0.004
+  Param: linx=0.611423
+  Param: liny=1.04627
+  Param: loutx=1.68246
+  Param: louty=1.94531
+  Param: guide_length=35
+  Param: guide_xwidth=0.12
+  Param: guide_yheight=0.12
+  Param: d_source_guide=0.5
+  Param: d_guide_sample=1.5
+  Param: lambda_f=4.2
+  Param: channel_angle=30
+  Param: d_sample_analyser=0.8
+  Param: analyser_d=3.357
+  Param: analyser_width=0.07
+  Param: analyser_height=0.03
+  Param: analyser_mosaic_h=30
+  Param: analyser_mosaic_v=30
+  Param: analyser_NH=1
+  Param: analyser_NV=1
+  Param: analyser_gap=0
+  Param: analyser_detector_distance=0.5
+  Param: detector_x=0.03
+  Param: detector_y=0.5
+  Param: sample_radius=0.01
+  Param: sample_height=0.02
+  Param: sample_rotation_x=0
+  Param: sample_rotation_y=0
+  Param: sample_rotation_z=0
+  Param: sample_f_QE=0
+  Param: sample_f_tun=0
+  Param: sample_gamma=0
+  Param: sample_E_tun=5
+end simulation
+
+begin data
+  Date: Fri Nov 20 17:22:32 2026 (1795191752)
+  type: array_2d(20, 1000)
+  Source: one_channel_instrument (one_channel_instrument.instr)
+  component: tube1_det0
+  position: 0.406582 -0.5 37.689
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 100000000
+  filename: tube1_det0.dat
+  statistics: X0=-0.1625; dX=1.86265e-09; Y0=0.039116; dY=0.00017862;
+  signal: Min=0; Max=0.227735; Mean=3.48564e-05;
+  values: 0.697127 0.243034 71
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.25 0.25 0.03 0.05
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Nov 20 17:22:32 2026 (1795191752)
+  type: array_2d(20, 1000)
+  Source: one_channel_instrument (one_channel_instrument.instr)
+  component: tube2_det0
+  position: 0.393418 -0.5 37.6966
+  title:  Intensity Position Time_Of_Flight Monitor (Cylinder) [out] per bin
+  Ncount: 100000000
+  filename: tube2_det0.dat
+  statistics: X0=-0.1625; dX=0; Y0=0.0390026; dY=0.000227653;
+  signal: Min=0; Max=0.092509; Mean=3.29428e-05;
+  values: 0.658856 0.185889 82
+  xvar: y 
+  yvar: TO
+  xlabel: y [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.25 0.25 0.03 0.05
+  variables: I I_err N
+end data
